@@ -3,3 +3,37 @@
     justify-content: center;
     flex-direction: column;
 }
+
+div {
+    .darken {
+        filter: brightness(0%);
+    }
+    .blur25 {
+        filter: blur(1rem);   
+    }
+    .darken.blur25 {
+        filter: brightness(0%) blur(1rem);
+    }
+}
+
+div {
+    .square {
+        width: 75px;
+        height: 75px;
+        background-color: black;
+        position: absolute;
+    }
+    .topleft {
+
+    }
+    .topright {
+        transform: translate(75px);
+    }
+    .bottomleft {
+        transform: translate(0px, 75px);
+    }
+    .bottomright {
+        transform: translate(75px, 75px);
+        
+    }
+}

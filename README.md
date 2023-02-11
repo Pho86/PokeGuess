@@ -1,5 +1,5 @@
 
-* https://www.kaggle.com/datasets/giovaniandrade/pokemon-images
+* https://www.kaggle.com/datasets/joshuabetetta/complete-pokedex-v100
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

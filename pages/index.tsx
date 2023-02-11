@@ -3,12 +3,23 @@ import Image from 'next/image';
 import { DetailedHTMLProps } from 'react';
 import PokeDex from "@/data/pokedex.json";
 import { useState, useEffect } from 'react';
+import styles from "@/styles/home.module.scss";
+import { selectRandomFromArray, generateRandomNumber } from "@/util"
 
 export default function Home() {
 
   const [Generation, setGeneration] = useState();
-  const [Mega, setMega] = useState(false);
   const [CopyPokeDex, setPokedex] = useState([] as any);
+  const [Darken, toggleDarken] = useState(false);
+  const [blur, setBlur] = useState(0);
+  const [Score, setScore] = useState(0);
+  const [Time, setTime] = useState(0);
+  const [TLSquare, setTLSquare] = useState(false)
+  const [TRSquare, setTRSquare] = useState(false)
+  const [BLSquare, setBLSquare] = useState(false)
+  const [BRSquare, setBRSquare] = useState(false)
+  const [Pokemon, setPokemon] = useState("" as any)
+
 
   function FilterPokeDex() {
     let pokedex: any = [];
@@ -19,6 +30,18 @@ export default function Home() {
     })
 
     setPokedex(pokedex);
+  }
+
+  function GeneratePokemon() {
+    const Pokemon = selectRandomFromArray(CopyPokeDex);
+    setPokemon(Pokemon)
+  }
+
+  const handleInput = (event:any) => {
+    if(event.target.value === Pokemon.pokemon_name) {
+      GeneratePokemon()
+
+    }
   }
 
   useEffect(() => {
@@ -36,15 +59,37 @@ export default function Home() {
 
       <main>
         <>
-          <h1 className='font-bold text-2xl'>Guess the Pokemon!</h1>
+          <h1>Guess the Pokemon!</h1>
 
-          {CopyPokeDex && CopyPokeDex.map((pokemon: any, i: number) => (
+          <button onClick={() => { toggleDarken(!Darken) }}>Darken</button>
+          <button onClick={() => { GeneratePokemon() }}>I dont know</button>
+
+          {Pokemon &&
+            <>
+
+              <div>
+                {TLSquare && <div className={`${styles.square} ${styles.topleft}`}> </div>}
+                {TRSquare && <div className={`${styles.square} ${styles.topright}`}> </div>}
+                {BLSquare && <div className={`${styles.square} ${styles.bottomleft}`}> </div>}
+                {BRSquare && <div className={`${styles.square} ${styles.bottomright}`}> </div>}
+                <Image className={`${Darken && styles.darken} ${blur === 25 && styles.blur25}`} src={`/pokemon/${Pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={150} height={150} />
+              </div>
+              <input onChange={handleInput}/>
+            </>
+          }
+          {/* {CopyPokeDex && CopyPokeDex.map((pokemon: any, i: number) => (
             <div key={i}>
-              <h2>{pokemon.pokemon_name}</h2>
-              {pokemon.pokemon_name.includes(' ') ? <Image src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g,"_")}.png`} alt={pokemon.pokemon_name} width={150} height={150} /> : <Image src={`/pokemon/${pokemon.pokemon_name.toLowerCase()}.png`} alt={pokemon.pokemon_name} width={150} height={150} /> }
+              <h4>{pokemon.pokemon_name}</h4>
+              {TLSquare && <div className={`${styles.square} ${styles.topleft}`}> </div>}
+              {TRSquare && <div className={`${styles.square} ${styles.topright}`}> </div>}
+              {BLSquare && <div className={`${styles.square} ${styles.bottomleft}`}> </div>}
+              {BRSquare && <div className={`${styles.square} ${styles.bottomright}`}> </div>}
+              <Image className={`${Darken && styles.darken} ${blur === 25 && styles.blur25}`} src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${pokemon.primary_color} pokemon its shape is a ${pokemon.shape}.`} width={150} height={150}/>
             </div>
           ))
-          }
+          } */}
+
+
         </>
       </main>
     </>

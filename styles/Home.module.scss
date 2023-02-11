@@ -37,3 +37,8 @@ div {
         
     }
 }
+
+.grid {
+    display:grid;
+    grid-template-columns: repeat(8, 1fr);
+}

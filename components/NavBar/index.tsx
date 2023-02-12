@@ -14,7 +14,7 @@ export default function NavBar({
             <Link href={"/"}>
                 < h3>Pokedex</ h3>
             </Link>
-            <Link href={"/"}>
+            <Link href={"/leaderboard"}>
                 < h3>Leaderboard</ h3>
             </Link>
 

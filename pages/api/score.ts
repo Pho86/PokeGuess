@@ -7,13 +7,14 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 
     switch (method) {
         case 'POST':
-            // get the title and content from the request body
-            const { user, time, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare } = req.body
-            // use prisma to create a new post using that data
-            const leaderboardscore = await prisma.post.create({
+            // get the users data from the request's body
+            console.log(req.body)
+            const { User, Time, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare } = req.body
+            // use prisma to create a new score using the data 
+            const leaderboardscore = await prisma.Leaderboard.create({
                 data: {
-                    user,
-                    time,
+                    User,
+                    Time,
                     Darken,
                     Blur,
                     OneSecond,

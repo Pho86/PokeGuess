@@ -1,0 +1,21 @@
+@use 'variables.module.scss' as v;
+
+.background {
+    position: fixed;
+    width: 100vw;
+    width: 100dvw;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: fade-out(v.$black, 0.5);
+    z-index: 100;
+}
+
+.popup {
+    z-index: 101;
+    padding: 3em;
+    background-color: white;
+    border-radius: 1em;
+}

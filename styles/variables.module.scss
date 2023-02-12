@@ -1,5 +1,6 @@
 $primary-color: #67b6ff;
-
+$black: #000;
 :export {
     primaryColor: $primary-color;
+    black: $black;
 }

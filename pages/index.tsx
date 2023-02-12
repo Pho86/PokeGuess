@@ -9,6 +9,8 @@ import Select from '@/components/Select';
 import PokeCard from '@/components/PokeCard';
 import Button from '@/components/Button';
 import NavBar from '@/components/NavBar';
+import axios from "axios";
+import Popup from '@/components/ScorePopup';
 
 export default function Home() {
 
@@ -23,11 +25,12 @@ export default function Home() {
   const [Gen8, setGen8] = useState(false)
   const [Gen9, setGen9] = useState(false)
 
-  const [onesecond, setoneSecond] = useState(false)
+  const [OneSecond, setOneSecond] = useState(false)
 
   const [SortPokeDex, setPokedex] = useState([] as any);
+  const [User, setUser] = useState("")
   const [Darken, toggleDarken] = useState(false);
-  const [Blur, setBlur] = useState(0);
+  const [Blur, setBlur] = useState(false);
   const [Score, setScore] = useState(0);
   const [Time, setTime] = useState(0);
   const [TLSquare, setTLSquare] = useState(false)
@@ -38,6 +41,7 @@ export default function Home() {
   const [PreviousPokemon, setPreviousPokemon] = useState("" as any)
   const [inputValue, setInputValue] = useState("");
   const [Disabled, toggleDisabled] = useState(true)
+  const [PopUp, togglePopUp] = useState(false)
 
   const FilterPokemon = async () => {
     let pokedex: any = [];
@@ -118,12 +122,16 @@ export default function Home() {
       }
     }
   }
+  const postData = async () => {
+    const response = axios.post('/api/score', { User, Time, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare })
+    alert('your data has been sent.')
+  }
 
   const handleChecks = async (event: React.ChangeEvent<HTMLInputElement>) => {
 
   }
   const Delay = async () => {
-    if (onesecond) {
+    if (OneSecond) {
       setTimeout(() => {
         setBRSquare(true)
         setBLSquare(true)
@@ -148,6 +156,7 @@ export default function Home() {
     toggleDisabled(true)
     setPreviousPokemon(Pokemon);
     setInputValue("");
+    togglePopUp(true)
   }
 
   useEffect(() => {
@@ -165,7 +174,7 @@ export default function Home() {
       <main className={styles.main}>
         <>
           <Select name="Darken" checked={Darken} onChange={async (event: any) => { toggleDarken(!Darken); EndGame() }} />
-          <Select name="1 Second" checked={onesecond} onChange={(event: any) => { setoneSecond(!onesecond); EndGame() }} />
+          <Select name="1 Second" checked={OneSecond} onChange={(event: any) => { setOneSecond(!OneSecond); EndGame() }} />
           <Select name="Gen 1" checked={Gen1} onChange={async (event: any) => { setGen1(!Gen1); EndGame() }} />
           <Select name="Gen 2" checked={Gen2} onChange={async (event: any) => { setGen2(!Gen2); EndGame() }} />
           <Select name="Gen 3" checked={Gen3} onChange={async (event: any) => { setGen3(!Gen3); EndGame() }} />
@@ -183,7 +192,13 @@ export default function Home() {
           </div>
 
 
-          {Score >= 1 && Disabled && <p><button>XXXX</button></p>}
+
+          {PopUp && <Popup onExit={() => togglePopUp(false)}>
+            <p>You lost!</p>
+            <p>Your score was {Score}.</p>
+            <button onClick={() => { postData(); togglePopUp(false) }}>Submit Score</button>
+          </Popup>}
+
 
           <div className={styles.grid}>
             {/* {SortPokeDex && SortPokeDex.map((pokemon: any, i: number) => (

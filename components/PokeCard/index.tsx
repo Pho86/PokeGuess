@@ -20,7 +20,7 @@ export default function PokeCard({
     BLSquare: boolean;
     BRSquare: boolean;
     Darken: boolean;
-    Blur: number;
+    Blur: boolean;
     onChange: React.ChangeEventHandler<HTMLInputElement>;
     value: string | number | readonly string[] | undefined;
     onKeyDown: React.KeyboardEventHandler<HTMLInputElement>;
@@ -34,7 +34,7 @@ export default function PokeCard({
                     {TRSquare && <div className={`${styles.square} ${styles.topright}`}> </div>}
                     {BLSquare && <div className={`${styles.square} ${styles.bottomleft}`}> </div>}
                     {BRSquare && <div className={`${styles.square} ${styles.bottomright}`}> </div>}
-                    <Image className={`${Darken && styles.darken} ${Blur === 25 && styles.blur25}`} src={`/pokemon/${Pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={250} height={250} />
+                    <Image className={`${Darken && styles.darken} ${Blur && styles.blur25}`} src={`/pokemon/${Pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={250} height={250} />
                 </div> :
                 <div className={styles.pokecard}>
                     <Image className={`${styles.darken}`} src={`/pokemon/unown.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={250} height={250} />

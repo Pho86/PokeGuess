@@ -1,4 +1,4 @@
-import styles from "./Select.module.scss";
+import styles from "./Select.module.sass";
 
 export default function Select({
     onChange,

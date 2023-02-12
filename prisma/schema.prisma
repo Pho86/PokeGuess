@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Leaderboard {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  user      String
+  time      Int
+  Darken    Boolean
+  Blur      Boolean
+  OneSecond Boolean
+  Gen1      Boolean
+  Gen2      Boolean
+  Gen3      Boolean
+  Gen4      Boolean
+  Gen5      Boolean
+  Gen6      Boolean
+  Gen7      Boolean
+  Gen8      Boolean
+  TLSquare  Boolean
+  TRSquare  Boolean
+  BLSquare  Boolean
+  BRSquare  Boolean
+}

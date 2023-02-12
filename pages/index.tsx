@@ -37,7 +37,7 @@ export default function Home() {
   const [Pokemon, setPokemon] = useState("" as any)
   const [PreviousPokemon, setPreviousPokemon] = useState("" as any)
   const [inputValue, setInputValue] = useState("");
-  const [disabled, toggleDisabled] = useState(true)
+  const [Disabled, toggleDisabled] = useState(true)
 
   const FilterPokemon = async () => {
     let pokedex: any = [];
@@ -132,7 +132,7 @@ export default function Home() {
       }, 1000)
     }
   }
-  
+
   const StartGame = async () => {
     setPreviousPokemon(Pokemon);
     GeneratePokemon();
@@ -166,24 +166,24 @@ export default function Home() {
         <>
           <Select name="Darken" checked={Darken} onChange={async (event: any) => { toggleDarken(!Darken); EndGame() }} />
           <Select name="1 Second" checked={onesecond} onChange={(event: any) => { setoneSecond(!onesecond); EndGame() }} />
-          <Select name="Gen 1" checked={Gen1} onChange={async (event: any) => { setGen1(!Gen1); EndGame()}} />
-          <Select name="Gen 2" checked={Gen2} onChange={async (event: any) => { setGen2(!Gen2); EndGame()}} />
-          <Select name="Gen 3" checked={Gen3} onChange={async (event: any) => { setGen3(!Gen3); EndGame()}} />
+          <Select name="Gen 1" checked={Gen1} onChange={async (event: any) => { setGen1(!Gen1); EndGame() }} />
+          <Select name="Gen 2" checked={Gen2} onChange={async (event: any) => { setGen2(!Gen2); EndGame() }} />
+          <Select name="Gen 3" checked={Gen3} onChange={async (event: any) => { setGen3(!Gen3); EndGame() }} />
           <Select name="Gen 4" checked={Gen4} onChange={(event: any) => { setGen4(!Gen4); handleChecks(event) }} />
           <Select name="Gen 5" checked={Gen5} onChange={(event: any) => { setGen5(!Gen5); handleChecks(event) }} />
 
           {Score}
-          
+
           <div className={styles.PokeCard}>
             <>
-              <PokeCard Pokemon={Pokemon} TLSquare={TLSquare} TRSquare={TRSquare} BLSquare={BLSquare} BRSquare={BRSquare} Blur={Blur} Darken={Darken} onChange={handleInput} onKeyDown={handleInput} value={inputValue} disabled={disabled} />
-              {disabled ? <Button onClick={() => { StartGame() }} type={"button"}>Start!</Button> : <Button onClick={() => { StartGame() }} type={"button"}>I don&apos;t know</Button>}
+              <PokeCard Pokemon={Pokemon} TLSquare={TLSquare} TRSquare={TRSquare} BLSquare={BLSquare} BRSquare={BRSquare} Blur={Blur} Darken={Darken} onChange={handleInput} onKeyDown={handleInput} value={inputValue} disabled={Disabled} />
+              {Disabled ? <Button onClick={() => { StartGame() }} type={"button"}>Start!</Button> : <Button onClick={() => { StartGame() }} type={"button"}>I don&apos;t know</Button>}
             </>
             {PreviousPokemon && <p>Previous: {PreviousPokemon.pokemon_name}</p>}
           </div>
-          
 
 
+          {Score >= 1 && Disabled && <p><button>XXXX</button></p>}
 
           <div className={styles.grid}>
             {/* {SortPokeDex && SortPokeDex.map((pokemon: any, i: number) => (

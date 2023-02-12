@@ -13,6 +13,7 @@ model Leaderboard {
   createdAt DateTime @default(now())
   User      String
   Time      Int
+  Score     Int
   Darken    Boolean
   Blur      Boolean
   OneSecond Boolean

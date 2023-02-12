@@ -10,9 +10,10 @@ export default function Popup({
 }) {
     return (
         <>
-            <div className={styles.background} onClick={onExit}>
+            <div className={styles.background} >
 
                 <div className={styles.popup}>
+                    <button onClick={onExit}>EXIT</button>
                     {children}
                 </div>
             </div>

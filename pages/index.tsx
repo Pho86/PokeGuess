@@ -39,6 +39,7 @@ export default function Home() {
   const [BRSquare, setBRSquare] = useState(false)
   const [Pokemon, setPokemon] = useState("" as any)
   const [PreviousPokemon, setPreviousPokemon] = useState("" as any)
+  const [PreviousGuess, setPreviousGuess] = useState("")
   const [inputValue, setInputValue] = useState("");
   const [Disabled, toggleDisabled] = useState(true)
   const [PopUp, togglePopUp] = useState(false)
@@ -115,15 +116,29 @@ export default function Home() {
       if (event.target.value.toLowerCase() === Pokemon.pokemon_name.toLowerCase()) {
         setPreviousPokemon(Pokemon)
         await GeneratePokemon()
+        setPreviousGuess(event.target.value)
         setInputValue("")
         setScore(Score + 1)
       } else {
+        setPreviousGuess(event.target.value)
         EndGame()
       }
     }
   }
+  const SubmitInput = async () => {
+    if (inputValue.toLowerCase() === Pokemon.pokemon_name.toLowerCase()) {
+      setPreviousGuess(inputValue)
+      setPreviousPokemon(Pokemon)
+      await GeneratePokemon()
+      setInputValue("")
+      setScore(Score + 1)
+    } else {
+      setPreviousGuess(inputValue)
+      EndGame()
+    }
+  }
   const postData = async () => {
-    const response = axios.post('/api/score', { User, Time, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare })
+    const response = axios.post('/api/score', { User, Time, Score, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare })
     alert('your data has been sent.')
   }
 
@@ -156,7 +171,9 @@ export default function Home() {
     toggleDisabled(true)
     setPreviousPokemon(Pokemon);
     setInputValue("");
-    togglePopUp(true)
+    if (Score >= 1) {
+      togglePopUp(true)
+    }
   }
 
   useEffect(() => {
@@ -173,7 +190,8 @@ export default function Home() {
       <NavBar />
       <main className={styles.main}>
         <>
-          <Select name="Darken" checked={Darken} onChange={async (event: any) => { toggleDarken(!Darken); EndGame() }} />
+          <Select name="B&W" checked={Darken} onChange={async (event: any) => { toggleDarken(!Darken); EndGame() }} />
+          <Select name="Blur" checked={Blur} onChange={async (event: any) => { setBlur(!Blur); EndGame() }} />
           <Select name="1 Second" checked={OneSecond} onChange={(event: any) => { setOneSecond(!OneSecond); EndGame() }} />
           <Select name="Gen 1" checked={Gen1} onChange={async (event: any) => { setGen1(!Gen1); EndGame() }} />
           <Select name="Gen 2" checked={Gen2} onChange={async (event: any) => { setGen2(!Gen2); EndGame() }} />
@@ -186,7 +204,7 @@ export default function Home() {
           <div className={styles.PokeCard}>
             <>
               <PokeCard Pokemon={Pokemon} TLSquare={TLSquare} TRSquare={TRSquare} BLSquare={BLSquare} BRSquare={BRSquare} Blur={Blur} Darken={Darken} onChange={handleInput} onKeyDown={handleInput} value={inputValue} disabled={Disabled} />
-              {Disabled ? <Button onClick={() => { StartGame() }} type={"button"}>Start!</Button> : <Button onClick={() => { StartGame() }} type={"button"}>I don&apos;t know</Button>}
+              {Disabled ? <Button onClick={() => { StartGame() }} type={"button"}>Start!</Button> : <div className={styles.buttons}><Button onClick={() => { StartGame() }} type={"button"}>I don&apos;t know</Button><Button onClick={() => { SubmitInput() }} type={"button"}>Submit</Button></div>}
             </>
             {PreviousPokemon && <p>Previous: {PreviousPokemon.pokemon_name}</p>}
           </div>
@@ -194,9 +212,10 @@ export default function Home() {
 
 
           {PopUp && <Popup onExit={() => togglePopUp(false)}>
-            <p>You lost!</p>
+            <p>You guessed {PreviousGuess} and it was {PreviousPokemon.pokemon_name}.</p>
             <p>Your score was {Score}.</p>
-            <button onClick={() => { postData(); togglePopUp(false) }}>Submit Score</button>
+            <input type="text" value={User} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
+            <button onClick={() => { if (User) { postData(); togglePopUp(false) } else alert('put a name please') }}>Submit Score</button>
           </Popup>}
 
 

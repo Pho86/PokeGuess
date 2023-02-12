@@ -10,8 +10,6 @@
 }
 
 
-
-
 .grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -21,4 +19,8 @@
     display: flex;
     flex-direction: column;
     justify-items: center;
+}
+.buttons {
+    display:flex;
+    gap:1em;
 }

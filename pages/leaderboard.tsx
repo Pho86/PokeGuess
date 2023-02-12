@@ -7,6 +7,8 @@ import NavBar from '@/components/NavBar';
 type LeaderboardProps = {
     id: number,
     User: string,
+    createdAt: Date,
+    Score: number,
     Time: number,
     Darken: boolean,
     Blur: boolean,
@@ -33,7 +35,7 @@ export default function Leaderboard({
 
     }
     useEffect(() => {
-        console.log(data)
+
     }, [])
     return (
         <>
@@ -43,12 +45,46 @@ export default function Leaderboard({
             <NavBar />
             <main className={styles.main}>
                 <h1>Leaderboard</h1>
-                {data.map((user: LeaderboardProps, index: number) => (
-                    <div key={user.id}>
-                        <h2>{user.User}</h2>
-                        <p>{user.Time}</p>
-                    </div>
-                ))}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Time</th>
+                            <th>Score</th>
+                            <th>Date</th>
+                            <th>B&W</th>
+                            <th>Blur</th>
+                            <th>I</th>
+                            <th>II</th>
+                            <th>III</th>
+                            <th>IV</th>
+                            <th>V</th>
+                            <th>VI</th>
+                            <th>VII</th>
+                            <th>VIII</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data.map((user: LeaderboardProps, index: number) => (
+                            <tr key={user.id}>
+                                <th>{user.User}</th>
+                                <th>{user.Time}</th>
+                                <th>{user.Score}</th>
+                                <th>{new Date(user.createdAt).toISOString().slice(0, 10)}</th>
+                                <th>{user.Darken ? "yes" : "no"}</th>
+                                <th>{user.Blur ? "yes" : "no"}</th>
+                                <th>{user.Gen1 ? "yes" : "no"}</th>
+                                <th>{user.Gen2 ? "yes" : "no"}</th>
+                                <th>{user.Gen3 ? "yes" : "no"}</th>
+                                <th>{user.Gen4 ? "yes" : "no"}</th>
+                                <th>{user.Gen5 ? "yes" : "no"}</th>
+                                <th>{user.Gen6 ? "yes" : "no"}</th>
+                                <th>{user.Gen7 ? "yes" : "no"}</th>
+                                <th>{user.Gen8 ? "yes" : "no"}</th>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </main>
         </>
     )

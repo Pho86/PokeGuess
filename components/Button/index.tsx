@@ -16,7 +16,7 @@ export default function Button({
             type={type}
             className={styles.Button}
         >
-            {children}
+            <span>{children}</span>
         </button>
     )
 }

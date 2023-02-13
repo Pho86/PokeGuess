@@ -1,7 +1,7 @@
 import Image from "next/image"
 import styles from './Pokemon.module.sass';
 import Lottie from "lottie-react";
-import Squirtle from "@/public/squirtle.json";
+import Squirtle from "@/public/pokeball-loading.json";
 
 export default function PokeCard({
     Pokemon,

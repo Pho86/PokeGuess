@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import { Children, DetailedHTMLProps } from 'react';
 import PokeDex from "@/data/pokedex.json";
 import { useState, useEffect, useRef } from 'react';
 import styles from "@/styles/home.module.scss";
@@ -122,7 +120,7 @@ export default function Home() {
 
   const GeneratePokemon = async (remove: boolean) => {
     let PokemonNum;
-    if(SortPokeDex.length >= 1) {
+    if (SortPokeDex.length >= 1) {
       PokemonNum = await generateRandomNumber(0, SortPokeDex.length - 1);
       setPokemon(SortPokeDex[PokemonNum])
       if (remove) SortPokeDex.splice(PokemonNum, 1);
@@ -144,7 +142,7 @@ export default function Home() {
         setScore(Score + 1)
       } else {
         setPreviousGuess(event.target.value)
-        EndGame()
+        EndGame(false)
       }
     }
   }
@@ -157,7 +155,7 @@ export default function Home() {
       setScore(Score + 1)
     } else {
       setPreviousGuess(inputValue)
-      EndGame()
+      EndGame(false)
     }
   }
   const postData = async () => {
@@ -165,9 +163,6 @@ export default function Home() {
     alert('your data has been sent.')
   }
 
-  const handleChecks = async (event: React.ChangeEvent<HTMLInputElement>) => {
-
-  }
   const Delay = async () => {
     setBRSquare(false)
     setBLSquare(false)
@@ -184,7 +179,9 @@ export default function Home() {
   }
 
   const StartGame = async (remove: boolean) => {
+    if (!Gen1 && !Gen2 && !Gen3 && !Gen4 && !Gen5 && !Gen6 && !Gen7 && !Gen8) return alert("you need to select a generation")
     setPreviousPokemon(Pokemon);
+    FilterPokeDex()
     if (remove) GeneratePokemon(true);
     else GeneratePokemon(false);
     setInputValue("");
@@ -197,15 +194,15 @@ export default function Home() {
     TimerStart()
   }
 
-  const EndGame = async () => {
+  const EndGame = async (reset: boolean) => {
     toggleDisabled(true)
     clearInterval(Timer.current)
     setPreviousPokemon(Pokemon);
     setInputValue("");
-    if (Score >= 1) {
-      togglePopUp(true)
-    }
+    if (reset) return
+    togglePopUp(true)
   }
+
 
   useEffect(() => {
     FilterPokemon()
@@ -221,50 +218,55 @@ export default function Home() {
       <NavBar />
       <main className={styles.main}>
         <>
-          <p>Time: {Time}</p>
-          <p>Score: {Score}</p>
-          <div className={styles.content}>
-
-            <div className={styles.CardCol}>
-              <Select name="B&W" checked={Darken} onChange={async (event: any) => { toggleDarken(!Darken); EndGame() }} />
-              <Select name="Blur" checked={Blur} onChange={async (event: any) => { setBlur(!Blur); EndGame() }} />
-              <Select name="1 Second" checked={OneSecond} onChange={(event: any) => { setOneSecond(!OneSecond); EndGame() }} />
+          <div className={styles.CardCol}>
+            <div className={styles.toptabs}>
+              <div className={styles.tab}>
+                <p>Time: {Time}</p>
+              </div>
+              <div className={styles.tab}>
+                <p>Score: {Score}</p>
+              </div>
             </div>
 
-            <div className={styles.PokeCard}>
-              <>
+            <div className={styles.CardRow}>
+              <div className={styles.CardCol}>
+                <Select name="B&W" checked={Darken} onChange={async (event: any) => { toggleDarken(!Darken); EndGame(true) }} />
+                <Select name="Blur" checked={Blur} onChange={async (event: any) => { setBlur(!Blur); EndGame(true) }} />
+                <Select name="1 Second" checked={OneSecond} onChange={(event: any) => { setOneSecond(!OneSecond); EndGame(true) }} />
+              </div>
+
+              <div className={styles.PokeCard}>
                 <PokeCard Pokemon={Pokemon} TLSquare={TLSquare} TRSquare={TRSquare} BLSquare={BLSquare} BRSquare={BRSquare} Blur={Blur} Darken={Darken} onChange={handleInput} onKeyDown={handleInput} value={inputValue} disabled={Disabled} />
                 {Disabled ? <Button onClick={() => { StartGame(true) }} type={"button"}>Start!</Button> : <div className={styles.buttons}><Button onClick={() => { GeneratePokemon(false) }} type={"button"}>I don&apos;t know</Button><Button onClick={() => { SubmitInput() }} type={"button"}>Submit</Button></div>}
-              </>
-            </div>
-            <div className={styles.CardCol}>
-              <Select name="Gen 1" checked={Gen1} onChange={(event: any) => { setGen1(!Gen1); EndGame() }} />
-              <Select name="Gen 2" checked={Gen2} onChange={(event: any) => { setGen2(!Gen2); EndGame() }} />
-              <Select name="Gen 3" checked={Gen3} onChange={(event: any) => { setGen3(!Gen3); EndGame() }} />
-              <Select name="Gen 4" checked={Gen4} onChange={(event: any) => { setGen4(!Gen4); EndGame(); }} />
-              <Select name="Gen 5" checked={Gen5} onChange={(event: any) => { setGen5(!Gen5); EndGame(); }} />
-              <Select name="Gen 6" checked={Gen6} onChange={(event: any) => { setGen6(!Gen6); EndGame(); }} />
-              <Select name="Gen 7" checked={Gen7} onChange={(event: any) => { setGen7(!Gen7); EndGame(); }} />
-              <Select name="Gen 8" checked={Gen8} onChange={(event: any) => { setGen8(!Gen8); EndGame(); }} />
+              </div>
+              <div className={styles.CardCol}>
+                <Select name="Gen 1" checked={Gen1} onChange={(event: any) => { setGen1(!Gen1); EndGame(true) }} />
+                <Select name="Gen 2" checked={Gen2} onChange={(event: any) => { setGen2(!Gen2); EndGame(true) }} />
+                <Select name="Gen 3" checked={Gen3} onChange={(event: any) => { setGen3(!Gen3); EndGame(true) }} />
+                <Select name="Gen 4" checked={Gen4} onChange={(event: any) => { setGen4(!Gen4); EndGame(true); }} />
+                <Select name="Gen 5" checked={Gen5} onChange={(event: any) => { setGen5(!Gen5); EndGame(true); }} />
+                <Select name="Gen 6" checked={Gen6} onChange={(event: any) => { setGen6(!Gen6); EndGame(true); }} />
+                <Select name="Gen 7" checked={Gen7} onChange={(event: any) => { setGen7(!Gen7); EndGame(true); }} />
+                <Select name="Gen 8" checked={Gen8} onChange={(event: any) => { setGen8(!Gen8); EndGame(true); }} />
+              </div>
             </div>
           </div>
 
-          {PreviousPokemon && <p>Previous: {PreviousPokemon.pokemon_name}</p>}
 
           {PopUp && <Popup onExit={() => { togglePopUp(false) }}>
             <p>You guessed {PreviousGuess} and it was {PreviousPokemon.pokemon_name}.</p>
-            <p>Your score was {Score}.</p>
+            <p>Your score was {Score} seconds.</p>
             <p>Your Time was {Time}.</p>
             <input type="text" value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
             <button onClick={async () => { if (User) { await postData(); togglePopUp(false) } else alert('put a name please') }}>Submit Score</button>
           </Popup>}
 
-          {Win && <Popup onExit={() => { togglePopUp(false) }}>
+          {Win && <Popup onExit={() => { toggleWin(false) }}>
             <p>Congratulations! You completed the PokeDex.</p>
-            <p>Your score was {Score}.</p>
+            <p>Your score was {Score} seconds.</p>
             <p>Your time was {Time}.</p>
             <input type="text" value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
-            <button onClick={async () => { if (User) { await postData(); togglePopUp(false) } else alert('put a name please') }}>Submit Score</button>
+            <button onClick={async () => { if (User) { await postData(); toggleWin(false) } else alert('put a name please') }}>Submit Score</button>
           </Popup>}
 
         </>

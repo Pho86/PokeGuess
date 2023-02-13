@@ -1,26 +1,30 @@
 @use 'variables.module.scss' as v
 
-.navBar 
+.navBar
     position: fixed
-    padding:1em
-    background-color: rgb(37, 64, 93)
+    padding: 1em
+    background-color: v.$secondary-color
     display: flex
     flex-direction: column
-    gap:1em
-    height:100vh
-    height:100dvh
+    justify-content: space-between
+    height: 100vh
+    height: 100dvh
     z-index: 100
 
-    h1 
-        color: white
-        padding:1em
+    a 
+        transition: all .2s ease-in-out
         border-radius: .5em
         &:hover
-            background-color: rgb(83, 89, 134)
+            background-color: v.$third-color
+
+    .topNav
+        display: flex
+        flex-direction: column
+        gap: .8em
+    h1
+        color: white
+        padding: 1.2em 1em
 
     h3
         color: white
-        padding: 1em
-        border-radius: .5em
-        &:hover
-            background-color: rgb(83, 89, 134)
+        padding: 1.2em 1em

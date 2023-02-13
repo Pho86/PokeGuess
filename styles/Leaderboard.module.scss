@@ -8,3 +8,17 @@
     min-height: 100vh;
     min-height: 100dvh;
 }
+
+.table {
+    border: 1px solid;
+    table-layout: fixed;
+    border-collapse: collapse;
+    thead {
+        font-weight: 700;
+    }
+    th {
+        border: 1px solid;
+        padding: .2em;
+        
+    }
+}

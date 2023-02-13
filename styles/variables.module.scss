@@ -1,6 +1,10 @@
 $primary-color: #67b6ff;
 $black: #000;
+$secondary-color: rgb(37, 64, 93);
+$third-color: rgb(83, 89, 134);
 :export {
     primaryColor: $primary-color;
     black: $black;
+    secondaryColor: $secondary-color;
+    thirdColor: $third-color;
 }

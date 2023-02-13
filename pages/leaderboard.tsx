@@ -43,7 +43,7 @@ export default function Leaderboard({
             <NavBar />
             <main className={styles.main}>
                 <h1>Leaderboard</h1>
-                <table>
+                <table className={styles.table}>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -68,17 +68,17 @@ export default function Leaderboard({
                                 <th>{user.User}</th>
                                 <th>{user.Time}</th>
                                 <th>{user.Score}</th>
-                                <th>{new Date(user.createdAt).toISOString().slice(0, 10)}</th>
-                                <th>{user.Darken ? "yes" : "no"}</th>
-                                <th>{user.Blur ? "yes" : "no"}</th>
-                                <th>{user.Gen1 ? "yes" : "no"}</th>
-                                <th>{user.Gen2 ? "yes" : "no"}</th>
-                                <th>{user.Gen3 ? "yes" : "no"}</th>
-                                <th>{user.Gen4 ? "yes" : "no"}</th>
-                                <th>{user.Gen5 ? "yes" : "no"}</th>
-                                <th>{user.Gen6 ? "yes" : "no"}</th>
-                                <th>{user.Gen7 ? "yes" : "no"}</th>
-                                <th>{user.Gen8 ? "yes" : "no"}</th>
+                                <th>{new Date(user.createdAt).toLocaleDateString('en-GB')}</th>
+                                <th>{user.Darken ? "✓" : "✗"}</th>
+                                <th>{user.Blur ? "✓" : "✗"}</th>
+                                <th>{user.Gen1 ? "✓" : "✗"}</th>
+                                <th>{user.Gen2 ? "✓" : "✗"}</th>
+                                <th>{user.Gen3 ? "✓" : "✗"}</th>
+                                <th>{user.Gen4 ? "✓" : "✗"}</th>
+                                <th>{user.Gen5 ? "✓" : "✗"}</th>
+                                <th>{user.Gen6 ? "✓" : "✗"}</th>
+                                <th>{user.Gen7 ? "✓" : "✗"}</th>
+                                <th>{user.Gen8 ? "✓" : "✗"}</th>
                             </tr>
                         ))}
                     </tbody>

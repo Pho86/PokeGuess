@@ -9,14 +9,15 @@ const figtree = Figtree({ subsets: ['latin'] })
 export default function App({ Component, pageProps }: AppProps) {
   return <>
     <Head>
-      <meta name="description" content="Hello world." />
+      <meta name="description" content="Guess that pokemon with PokeGuess." />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
     <style jsx global>{`
-        html {
+        html, button, ::placeholder, input {
           font-family: ${figtree.style.fontFamily};
         }
+        
       `}</style>
 
     <Component {...pageProps} />

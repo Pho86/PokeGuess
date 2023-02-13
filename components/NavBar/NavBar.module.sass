@@ -11,16 +11,22 @@
     height: 100dvh
     z-index: 100
 
-    a 
-        transition: all .2s ease-in-out
-        border-radius: .5em
-        &:hover
-            background-color: v.$third-color
+    div
+        *
+            transition: all .4s ease-in-out
+            border-radius: .5em
+            &:hover
+                background-color: v.$third-color
+
+    .active
+        transition: all .4s ease-in-out
+        background-color: adjust-hue(v.$third-color, -15deg)
 
     .topNav
         display: flex
         flex-direction: column
         gap: .8em
+        
     h1
         color: white
         padding: 1.2em 1em

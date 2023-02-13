@@ -1,17 +1,23 @@
 .main {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    // align-items: center;
+    // justify-content: center;
     flex-direction: column;
-    max-width: 100vw;
+    margin-left: 210px;
+    width:90%;
     overflow-x: hidden;
     min-height: 100vh;
     min-height: 100dvh;
-    margin-left:220px;
+    gap:1em;
+    h1 {
+       text-align: center; 
+    }
 }
 
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    padding: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    
 }

@@ -1,4 +1,3 @@
-
 import styles from "@/styles/PokeDex.module.scss"
 import PokeDexData from "@/data/pokedex.json";
 import { useState, useEffect } from "react";
@@ -28,14 +27,14 @@ export default function PokeDex({
             <Head>
                 <title>PokéDex | PokéGuess</title>
             </Head>
-            <NavBar/>
+            <NavBar active={2}/>
             <main className={styles.main}>
                 <h1>PokéDex</h1>
                 <div className={styles.grid}>
                     {SortedDex && SortedDex.map((pokemon: any, i: number) => (
                         <div key={i}>
-                            <h4>{pokemon.pokemon_name}</h4>
-                            <Image src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${pokemon.primary_color} pokemon its shape is a ${pokemon.shape}.`} width={25} height={25} />
+                            <h4>#{pokemon.pokedex_number} {pokemon.pokemon_name}</h4>
+                            <Image src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${pokemon.primary_color} pokemon its shape is a ${pokemon.shape}.`} width={50} height={50} />
                         </div>
                     ))
                     }

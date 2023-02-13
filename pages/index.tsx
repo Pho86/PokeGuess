@@ -10,8 +10,8 @@ import NavBar from '@/components/NavBar';
 import axios from "axios";
 import Popup from '@/components/ScorePopup';
 
-export default function Home() {
 
+export default function Home() {
 
   const [Gen1, setGen1] = useState(true)
   const [Gen2, setGen2] = useState(false)
@@ -64,7 +64,7 @@ export default function Home() {
     return pokedex
   }
 
-  // hopefully find alternative to this if statement filter later
+  // find alternative to this if statement filter later?
   const FilterPokeDex = async () => {
     const pokedex = await FilterPokemon()
     let genPokeDex: any = [];
@@ -109,6 +109,7 @@ export default function Home() {
           genPokeDex.push({ ...pokemon })
         }
       }
+      // Gen9 is for testing
       if (Gen9) {
         if (pokemon.generation === 9) {
           genPokeDex.push({ ...pokemon })
@@ -146,6 +147,7 @@ export default function Home() {
       }
     }
   }
+
   const SubmitInput = async () => {
     if (inputValue.toLowerCase() === Pokemon.pokemon_name.toLowerCase()) {
       setPreviousGuess(inputValue)
@@ -158,8 +160,9 @@ export default function Home() {
       EndGame(false)
     }
   }
+
   const postData = async () => {
-    const response = axios.post('/api/score', { User, Time, Score, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare })
+    axios.post('/api/score', { User, Time, Score, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare })
     alert('your data has been sent.')
   }
 
@@ -203,7 +206,6 @@ export default function Home() {
     togglePopUp(true)
   }
 
-
   useEffect(() => {
     FilterPokemon()
     FilterPokeDex()
@@ -211,11 +213,12 @@ export default function Home() {
 
   return (
     <>
+
       <Head>
-        <title>PokéGuess</title>
+        <title>Home | PokéGuess</title>
       </Head>
 
-      <NavBar />
+      <NavBar active={1}/>
       <main className={styles.main}>
         <>
           <div className={styles.CardCol}>
@@ -272,5 +275,6 @@ export default function Home() {
         </>
       </main>
     </>
+    
   )
 }

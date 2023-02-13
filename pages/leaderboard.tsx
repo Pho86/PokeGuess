@@ -40,7 +40,7 @@ export default function Leaderboard({
             <Head>
                 <title>Leaderboard | PokéGuess</title>
             </Head>
-            <NavBar />
+            <NavBar active={3}/>
             <main className={styles.main}>
                 <h1>Leaderboard</h1>
                 <table className={styles.table}>

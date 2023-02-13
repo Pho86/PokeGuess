@@ -1,0 +1,17 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 100vw;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin-left:220px;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}

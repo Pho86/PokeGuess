@@ -1,10 +1,10 @@
 import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
-import { Inter } from '@next/font/google'
+import { Figtree } from '@next/font/google'
 import Head from 'next/head';
 
 
-const inter = Inter({ subsets: ['latin'] })
+const figtree = Figtree({ subsets: ['latin'] })
 
 export default function App({ Component, pageProps }: AppProps) {
   return <>
@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     <style jsx global>{`
         html {
-          font-family: ${inter.style.fontFamily};
+          font-family: ${figtree.style.fontFamily};
         }
       `}</style>
 

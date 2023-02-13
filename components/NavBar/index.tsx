@@ -6,12 +6,12 @@ export default function NavBar({
     return (
         <nav className={styles.navBar}>
             <Link href={"/"}>
-                <h1>PokeGuess</h1>
+                <h1>PokéGuess</h1>
             </Link>
             <Link href={"/"}>
                 < h3>Home</ h3>
             </Link>
-            <Link href={"/"}>
+            <Link href={"/pokedex"}>
                 < h3>Pokedex</ h3>
             </Link>
             <Link href={"/leaderboard"}>

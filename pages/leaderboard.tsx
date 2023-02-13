@@ -31,16 +31,14 @@ export default function Leaderboard({
 }: {
     data: LeaderboardProps
 }) {
-    const FetchLeaderboard = async () => {
 
-    }
     useEffect(() => {
 
     }, [])
     return (
         <>
             <Head>
-                <title>Leaderboard | PokeGuess</title>
+                <title>Leaderboard | PokéGuess</title>
             </Head>
             <NavBar />
             <main className={styles.main}>
@@ -91,7 +89,11 @@ export default function Leaderboard({
 }
 
 export async function getServerSideProps() {
-    const data = await prisma.Leaderboard.findMany()
+    const data = await prisma.Leaderboard.findMany({
+        orderBy: {
+            Score: "desc"
+        }
+    })
 
     return {
         props: {

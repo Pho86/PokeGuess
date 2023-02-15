@@ -5,32 +5,39 @@
     padding: 1em
     background-color: v.$secondary-color
     display: flex
-    flex-direction: column
+    // flex-direction: column
     justify-content: space-between
-    height: 100vh
-    height: 100dvh
+    // height: 100vh
+    // height: 100dvh
+    width: 100vw
+    width:100dvw
     z-index: 100
 
     div
         *
             transition: all .4s ease-in-out
             border-radius: .5em
+            display: flex
+            justify-content: center
+            align-items: center
+            height:100%
+            color: white
             &:hover
                 background-color: v.$third-color
 
     .active
-        transition: all .4s ease-in-out
+        // transition: all .4s ease-in-out
         background-color: adjust-hue(v.$third-color, -15deg)
 
     .topNav
         display: flex
-        flex-direction: column
-        gap: .8em
+        // flex-direction: column
+        gap: 1em
         
     h1
-        color: white
-        padding: 1.2em 1em
+        // color: white
+        padding: 1em 1em
 
     h3
-        color: white
-        padding: 1.2em 1em
+        // color: white
+        padding: 1em 1em

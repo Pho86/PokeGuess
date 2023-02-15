@@ -10,12 +10,102 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   min-height: 100dvh;
-  background: rgb(207,207,207);
-  background: linear-gradient(180deg, rgb(217, 217, 217) 0%, rgba(226,226,226,1) 25%, rgba(255,255,255,1) 100%);
+  background: rgb(207, 207, 207);
+  background: linear-gradient(180deg, rgb(217, 217, 217) 0%, rgba(226, 226, 226, 1) 25%, rgba(255, 255, 255, 1) 100%);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+
+.Water {
+  background: #b7caff;
+  color: lighten(#b7caff, 30%);
+}
+
+.Fire {
+  background: #EE8130;
+  color: lighten(#EE8130, 50%);
+}
+
+.Normal {
+  background: #A8A77A;
+  color: lighten(#A8A77A, 30%);
+}
+
+.Electric {
+  background: #F7D02C;
+  color: lighten(#F7D02C, 30%);
+}
+
+.Grass {
+  background: #7AC74C;
+  color: lighten(#7AC74C, 30%);
+}
+
+.Ice {
+  background: #96D9D6;
+  color: lighten(#96D9D6, 30%);
+}
+
+.Fighting {
+  background: #C22E28;
+  color: lighten(#C22E28, 30%);
+}
+
+.Ground {
+  background: #E2BF65;
+  color: lighten(#E2BF65, 30%);
+}
+
+.Poison {
+  background: #A33EA1;
+  color: lighten(#A33EA1, 30%);
+}
+
+.Flying {
+  background: #A98FF3;
+  color: lighten(#A98FF3, 30%);
+}
+
+.Psychic {
+  background: #F95587;
+  color: lighten(#F95587, 30%);
+}
+
+.Bug {
+  background: #A6B91A;
+  color: lighten(#A6B91A, 30%);
+}
+
+.Rock {
+  background: #B6A136;
+  color: lighten(#B6A136, 30%);
+}
+
+.Ghost {
+  background: #735797;
+  color: lighten(#735797, 30%);
+}
+
+.Dragon {
+  background: #6F35FC;
+  color: lighten(#6F35FC, 30%);
+}
+
+.Dark {
+  background: #705746;
+  color: lighten(#705746, 30%);
+}
+.Steel {
+  background: #B7B7CE;
+  color: lighten(#B7B7CE, 30%);
+}
+
+.Fairy {
+  background: #D685AD;
+  color: lighten(#D685AD, 30%);
 }
 

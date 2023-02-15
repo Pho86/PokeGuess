@@ -184,7 +184,7 @@ export default function Home() {
   const StartGame = async (remove: boolean) => {
     if (!Gen1 && !Gen2 && !Gen3 && !Gen4 && !Gen5 && !Gen6 && !Gen7 && !Gen8) return alert("you need to select a generation")
     setPreviousPokemon(Pokemon);
-    FilterPokeDex()
+    await FilterPokeDex()
     if (remove) GeneratePokemon(true);
     else GeneratePokemon(false);
     setInputValue("");

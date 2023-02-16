@@ -21,8 +21,8 @@ a {
 
 
 .Water {
-  background: #b7caff;
-  color: lighten(#b7caff, 30%);
+  background: #4592c4;
+  color: lighten(#4592c4, 45%);
 }
 
 .Fire {
@@ -32,17 +32,17 @@ a {
 
 .Normal {
   background: #A8A77A;
-  color: lighten(#A8A77A, 30%);
+  color: lighten(#A8A77A, 60%);
 }
 
 .Electric {
   background: #F7D02C;
-  color: lighten(#F7D02C, 30%);
+  color: darken(#F7D02C, 30%);
 }
 
 .Grass {
-  background: #7AC74C;
-  color: lighten(#7AC74C, 30%);
+  background: #9bcc50;
+  color: lighten(#7AC74C, 100%);
 }
 
 .Ice {
@@ -52,7 +52,7 @@ a {
 
 .Fighting {
   background: #C22E28;
-  color: lighten(#C22E28, 30%);
+  color: lighten(#C22E28, 50%);
 }
 
 .Ground {
@@ -62,7 +62,7 @@ a {
 
 .Poison {
   background: #A33EA1;
-  color: lighten(#A33EA1, 30%);
+  color: lighten(#A33EA1, 50%);
 }
 
 .Flying {
@@ -77,17 +77,17 @@ a {
 
 .Bug {
   background: #A6B91A;
-  color: lighten(#A6B91A, 30%);
+  color: darken(#A6B91A, 30%);
 }
 
 .Rock {
   background: #B6A136;
-  color: lighten(#B6A136, 30%);
+  color: darken(#B6A136, 30%);
 }
 
 .Ghost {
   background: #735797;
-  color: lighten(#735797, 30%);
+  color: darken(#735797, 80%);
 }
 
 .Dragon {
@@ -97,7 +97,7 @@ a {
 
 .Dark {
   background: #705746;
-  color: lighten(#705746, 30%);
+  color: darken(#705746, 70%);
 }
 .Steel {
   background: #B7B7CE;

@@ -36,6 +36,7 @@ export default function PokeDex({
                 <title>PokéDex | PokéGuess</title>
             </Head>
             <NavBar active={2} />
+            <PokeDexPopup onExit={()=>{setOpenCard("")}} pokemon={OpenCard} />
             <main className={styles.main}>
                 <h1>PokéDex</h1>
                 <div className={styles.grid}>
@@ -44,7 +45,6 @@ export default function PokeDex({
                     ))
                     }
                 </div>
-                <PokeDexPopup pokemon={OpenCard} />
             </main>
         </>
     )

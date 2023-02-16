@@ -2,17 +2,13 @@
 
 .navBar
     position: fixed
-    padding: 1em
+    padding: .5em
     background-color: v.$secondary-color
     display: flex
-    // flex-direction: column
     justify-content: space-between
-    // height: 100vh
-    // height: 100dvh
     width: 100vw
-    width:100dvw
+    width: 100dvw
     z-index: 100
-
     div
         *
             transition: all .4s ease-in-out
@@ -26,18 +22,14 @@
                 background-color: v.$third-color
 
     .active
-        // transition: all .4s ease-in-out
         background-color: adjust-hue(v.$third-color, -15deg)
 
     .topNav
         display: flex
-        // flex-direction: column
         gap: 1em
         
     h1
-        // color: white
         padding: 1em 1em
 
     h3
-        // color: white
         padding: 1em 1em

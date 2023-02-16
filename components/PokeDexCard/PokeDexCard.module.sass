@@ -7,9 +7,12 @@
     cursor: pointer
     &:hover
         transform:(translate(0px, -15px))
+        img 
+            filter: drop-shadow(0px 8px 4px rgba(#2d2d2d, .2)) 
+
         .info
-            background: linear-gradient(135deg, #ffdfdf 0%,#ffd2d2 100%)
-            filter: drop-shadow(0px 8px 0px #ffb1b1)
+            background: linear-gradient(135deg, #ffe9e9 0%,#d6d6d6 100%)
+            filter: drop-shadow(0px 8px 0px #ffb1b1) drop-shadow(0px 4px 4px rgba(#2d2d2d, 0.3)) 
 
     img 
         z-index: 50
@@ -25,7 +28,7 @@
         width:100%
         display: flex
         flex-direction: column
-        gap: .8em
+        gap: .3em
 
     .tag 
         border-radius: .8em
@@ -35,6 +38,7 @@
 
 
     .tags 
+        margin-top: .6em
         display: flex
         justify-content: center
         gap:1em

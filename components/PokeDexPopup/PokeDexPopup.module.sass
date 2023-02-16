@@ -1,15 +1,80 @@
-.background 
+@use 'variables.module.scss' as v
+
+.background
     position: fixed
     width: 100vw
+    height: 100vh
+    background-color: rgba(v.$black, 0.5)
+    z-index: 100
+
+.area
+    width: 100vw
+    height: 100vh
+    width: 100dvw
+    height: 100dvh
+    z-index: 101
+    pointer-events: none
+    position: fixed
     display: flex
     justify-content: center
     align-items: center
-    height: 100vh
-    background-color: red
+    .popup
+        background: linear-gradient(135deg, #f7e6e6 0%,#dddddd 100%)
+        filter: drop-shadow(0px 8px 0px #ffa1a1)
+        padding: 3em
+        border-radius: 2em
+        pointer-events: auto
+        justify-self: flex-start
+        display: flex
+        gap:2em
+        max-width: 80vw
+        @media screen and (max-width:768px) 
+            flex-direction: column
+        .number
+            color: #616161
+        .tag 
+            border-radius: .8em
+            padding:.5em
+            border: none
+            font-weight: 800
+            width:100%
+            text-align: center
+        .tags 
+            display: flex
+            justify-content: space-between
+            gap:1em
+        .col
+            display: flex
+            flex-direction: column
+            gap:1em
+        .abilities 
+            font-weight: 600
+        .bar 
+            width: 100%
+            border: 3px solid black
+            border-radius: 1em
+            display: flex 
+        .female
+            color: #FF6060
+            font-weight: 600
+        .male
+            color: #3355FF
+            font-weight: 600
+        .femalebar
+            background-color: #FF6060
+            height: 10px
+        .malebar
+            height: 10px
+            background-color: #3355FF
+        .borderleft 
+            border-radius: 0em 1em 1em 0em
+        .borderright
+            border-radius: 1em 0em 0em 1em
+        .borderall 
+            border-radius: 1em 1em 1em 1em
+        .gender
+            display: flex
+            gap:2em
+            justify-content: space-between
 
-.popup 
-    // position: fixed
-    left: 0
-    top: 0
-    // transform: translate(50vw, 50vh)
-    padding: 3em
+

@@ -11,7 +11,8 @@ export default function PokeDex({
 
 }) {
     const [SortedDex, setSorted] = useState([]);
-    const [OpenCard, setOpenCard] = useState("" as any)
+    const [OpenCard, setOpenCard] = useState("" as any);
+    
     const FilterPokemon = async () => {
         let pokedex: any = [];
         PokeDexData.filter((pokemon: any, i: number) => {

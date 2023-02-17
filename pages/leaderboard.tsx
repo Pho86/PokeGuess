@@ -4,28 +4,8 @@ import Head from 'next/head';
 import styles from "@/styles/Leaderboard.module.scss";
 import { useEffect, useState } from 'react';
 import NavBar from '@/components/NavBar';
-type LeaderboardProps = {
-    id: number,
-    User: string,
-    createdAt: Date,
-    Score: number,
-    Time: number,
-    Darken: boolean,
-    Blur: boolean,
-    OneSecond: boolean,
-    Gen1: boolean,
-    Gen2: boolean,
-    Gen3: boolean,
-    Gen4: boolean,
-    Gen5: boolean,
-    Gen6: boolean,
-    Gen7: boolean,
-    Gen8: boolean,
-    TLSquare: boolean,
-    BLSquare: boolean,
-    TRSquare: boolean,
-    BRSquare: boolean
-}
+import { LeaderboardProps } from '@/types';
+
 export default function Leaderboard({
     data
 }: {

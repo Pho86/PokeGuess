@@ -6,6 +6,7 @@ import Head from "next/head";
 import NavBar from "@/components/NavBar";
 import PokeDexCard from "@/components/PokeDexCard";
 import PokeDexPopup from "@/components/PokeDexPopup";
+import { pokemonProps } from "@/types";
 
 export default function PokeDex({
 
@@ -15,17 +16,19 @@ export default function PokeDex({
     
     const FilterPokemon = async () => {
         let pokedex: any = [];
-        PokeDexData.filter((pokemon: any, i: number) => {
+        PokeDexData.filter((pokemon: pokemonProps, i: number) => {
             if (pokemon.is_default) {
                 pokedex.push({ ...pokemon })
             }
         })
         setSorted(pokedex)
     }
-    const openCard = async (pokemon: any) => {
+
+    const openCard = async (pokemon: pokemonProps) => {
         setOpenCard(pokemon)
         console.log(pokemon)
     }
+    
     useEffect(() => {
         FilterPokemon()
         console.log(SortedDex)
@@ -41,7 +44,7 @@ export default function PokeDex({
             <main className={styles.main}>
                 <h1>PokéDex</h1>
                 <div className={styles.grid}>
-                    {SortedDex && SortedDex.map((pokemon: any, i: number) => (
+                    {SortedDex && SortedDex.map((pokemon: pokemonProps, i: number) => (
                         <PokeDexCard onClick={openCard} pokemon={pokemon} key={i} />
                     ))
                     }

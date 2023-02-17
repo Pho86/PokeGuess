@@ -9,6 +9,7 @@ import Button from '@/components/Button';
 import NavBar from '@/components/NavBar';
 import axios from "axios";
 import Popup from '@/components/ScorePopup';
+import { pokemonProps } from "@/types";
 
 
 export default function Home() {
@@ -44,7 +45,7 @@ export default function Home() {
   const [Disabled, toggleDisabled] = useState(true)
   const [PopUp, togglePopUp] = useState(false);
   const [Win, toggleWin] = useState(false)
-  const Timer = useRef("" as any);
+  const Timer = useRef(0 as any);
 
   const TimerStart = async () => {
     let x = 0;
@@ -56,7 +57,7 @@ export default function Home() {
 
   const FilterPokemon = async () => {
     let pokedex: any = [];
-    PokeDex.filter((pokemon: any, i: number) => {
+    PokeDex.filter((pokemon: pokemonProps, i: number) => {
       if (pokemon.is_default) {
         pokedex.push({ ...pokemon })
       }
@@ -68,7 +69,7 @@ export default function Home() {
   const FilterPokeDex = async () => {
     const pokedex = await FilterPokemon()
     let genPokeDex: any = [];
-    await pokedex.filter((pokemon: any, i: number) => {
+    await pokedex.filter((pokemon: pokemonProps, i: number) => {
       if (Gen1) {
         if (pokemon.generation === 1) {
           genPokeDex.push({ ...pokemon })
@@ -109,7 +110,7 @@ export default function Home() {
           genPokeDex.push({ ...pokemon })
         }
       }
-      // Gen9 is for testing
+      // Gen9 is for testing purposes
       if (Gen9) {
         if (pokemon.generation === 9) {
           genPokeDex.push({ ...pokemon })
@@ -122,7 +123,7 @@ export default function Home() {
   const GeneratePokemon = async (remove: boolean) => {
     let PokemonNum;
     if (SortPokeDex.length >= 1) {
-      PokemonNum = await generateRandomNumber(0, SortPokeDex.length - 1);
+      PokemonNum = generateRandomNumber(0, SortPokeDex.length - 1);
       setPokemon(SortPokeDex[PokemonNum])
       if (remove) SortPokeDex.splice(PokemonNum, 1);
     }

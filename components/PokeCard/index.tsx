@@ -1,7 +1,8 @@
 import Image from "next/image"
 import styles from './Pokemon.module.sass';
 import Lottie from "lottie-react";
-import Squirtle from "@/public/pokeball-loading.json";
+import Pokeball from "@/public/pokeball-loading.json";
+import { pokemonProps } from "@/types";
 
 export default function PokeCard({
     Pokemon,
@@ -16,7 +17,7 @@ export default function PokeCard({
     onKeyDown,
     disabled,
 }: {
-    Pokemon: any;
+    Pokemon: pokemonProps;
     TLSquare: boolean;
     TRSquare: boolean;
     BLSquare: boolean;
@@ -40,8 +41,7 @@ export default function PokeCard({
                     <Image className={`${Darken && styles.darken} ${Blur && styles.blur25}`} src={`/pokemon/${Pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={250} height={250} />
                 </div> :
                 <div className={styles.pokecard}>
-                    <Lottie animationData={Squirtle} loop={true} style={{ width: 250 }} />
-                    {/* <Image className={`${styles.darken}`} src={`/pokemon/unown.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={250} height={250} /> */}
+                    <Lottie animationData={Pokeball} loop={true} style={{ width: 250 }} />
                 </div>
             }
             <input placeholder={"Enter Pokemon Name"} className={styles.input} onKeyDown={onKeyDown} onChange={onChange} value={value} disabled={disabled} />

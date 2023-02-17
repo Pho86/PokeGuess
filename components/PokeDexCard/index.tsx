@@ -1,12 +1,14 @@
 import styles from "./PokeDexCard.module.sass";
 import Image from "next/image";
 import { motion } from 'framer-motion'
+import { pokemonProps } from "@/types";
+
 export default function PokeDexCard({
     pokemon,
-    onClick = (pokemon: any) => { return pokemon }
+    onClick = (pokemon: pokemonProps) => { return pokemon }
 }: {
-    pokemon: any,
-    onClick: (pokemon: any) => {}
+    pokemon: pokemonProps,
+    onClick: (pokemon: pokemonProps) => {}
 }) {
     return (
         <motion.div className={styles.pokecard} onClick={() => { onClick(pokemon) }}

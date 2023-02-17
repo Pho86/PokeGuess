@@ -16,6 +16,11 @@ export default function PokeDexCard({
             whileInView={{ opacity: 1, x: 0 }}
             exit={{ opacity: .6, x: 25 }}
             transition={{ type: "spring", stiffness: 100, duration: .5 }}
+            whileHover={{
+                scale: 1.05,
+                transition: { duration: .3 },
+                y: -5
+              }}
         >
             <Image src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${pokemon.primary_color} pokemon its shape is a ${pokemon.shape}.`} width={150} height={150} />
             <div className={styles.info}>

@@ -38,5 +38,6 @@ export type LeaderboardProps = {
     TLSquare: boolean,
     BLSquare: boolean,
     TRSquare: boolean,
-    BRSquare: boolean
+    BRSquare: boolean,
+    map: (children : any) => React.ReactNode
 }

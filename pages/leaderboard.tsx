@@ -69,7 +69,7 @@ export default function Leaderboard({
 }
 
 export async function getServerSideProps() {
-    const data = await prisma.Leaderboard.findMany({
+    const data = await prisma.leaderboard.findMany({
         orderBy: {
             Score: "desc"
         }

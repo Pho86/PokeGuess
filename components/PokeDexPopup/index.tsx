@@ -23,14 +23,15 @@ export default function PokeDexPopup({
                                 animate={{ y: 0, opacity: 1 }}
                                 exit={{ y: 250, opacity: 0 }}
                                 transition={{ duration: .45, ease: "easeInOut" }}
+                                id={pokemon.pokemon_name + "-popup"}
                             >
                                 <div className={styles.col}>
                                     <Image src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${pokemon.primary_color} pokemon its shape is a ${pokemon.shape}.`} width={275} height={275} />
                                 </div>
                                 <div className={styles.col}>
                                     <h2><span className={styles.number}>#{pokemon.pokedex_number}</span> {pokemon.pokemon_name}</h2>
-                                    <h4>{pokemon.genus} Pokemon</h4>
-                                    <p>Height: {pokemon.height} m. Weight: {pokemon.weight} kg</p>
+                                    <h4>{pokemon.genus} Pokemon</h4> 
+                                    <p>Height: <strong>{pokemon.height} m</strong> Weight: <strong>{pokemon.weight} kg</strong></p>
                                     <p className={styles.tags}><span className={`${pokemon.type_1} ${styles.tag}`}>{pokemon.type_1}</span> {pokemon.type_2 && <span className={`${pokemon.type_2} ${styles.tag}`}>{pokemon.type_2}</span>}</p>
 
                                     {

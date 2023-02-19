@@ -7,19 +7,73 @@
     overflow-x: hidden;
     min-height: 100vh;
     min-height: 100dvh;
-    gap:1em
+    gap: 1em;
+    padding: 3em;
 }
 
+.popuptable {
+    border: 1px solid;
+    border-collapse: collapse;
+    th {
+        padding: .2em;
+        border: 1px solid;
+    }
+
+}
 .table {
     border: 1px solid;
     table-layout: fixed;
     border-collapse: collapse;
+    overflow-x: auto;
+    width: 100%;
+
     thead {
         font-weight: 700;
     }
+
     th {
         border: 1px solid;
-        padding: .2em;
-        
+    }
+
+    tbody {
+        tr:nth-child(odd) {
+            background-color: rgb(228, 226, 226);
+        }
+        .see_more {
+            color:rgb(59, 59, 59)
+        }
+    }
+
+    .date {
+        width: 125px;
+    }
+
+    
+    
+}
+.true, .true_sm {
+    background-color: #7bf672;
+}
+
+.false, .false_sm {
+    background-color: #ff928d;
+}
+.see_more {
+    display: none;
+    cursor: pointer;
+    
+}
+
+@media screen and (max-width:768px) {
+    .true,
+    .false,
+    .m_hide {
+        display: none;
+    }
+
+    table {
+        .see_more {
+            display: table-cell;
+        }
     }
 }

@@ -53,7 +53,7 @@ test.describe('interacting with the pokedex area', () => {
 
         expect(computedStyles.padding).toEqual('28.8px');
         expect(computedStyles.textAlign).toEqual('center');
-        expect(computedStyles.border).toEqual('1px dashed rgb(255, 179, 179)');
+        expect(computedStyles.border).toEqual('1px solid rgb(255, 179, 179)');
         expect(computedStyles.gap).toEqual('4.8px');
     });
 

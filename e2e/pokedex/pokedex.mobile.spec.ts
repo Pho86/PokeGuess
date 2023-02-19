@@ -27,7 +27,7 @@ test.describe('Mobile Pokedex page tests', () => {
 
 
 test.describe('interacting with the pokedex area', () => {
-  test('find and click Gardevoir in the pokedex and make sure popup appears and find changes', async ({ page }) => {
+  test('find and click Gardevoir in the pokedex and make sure popup appears and find tablet changes', async ({ page }) => {
     await page.goto(pokeDexPage);
     await page.click('text=Gardevoir')
 

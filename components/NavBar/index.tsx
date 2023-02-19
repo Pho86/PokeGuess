@@ -11,18 +11,18 @@ export default function NavBar({
                 <Link href={"/"}>
                     <h1>PokéGuess</h1>
                 </Link>
-                <Link href={"/"} className={`${active === 1 && styles.active}`}>
+                <Link href={"/"} className={`${active === 1 && styles.active}`} tabIndex={0}>
                     < h3>Home</ h3>
                 </Link>
-                <Link href={"/pokedex"} className={`${active === 2 && styles.active}`}>
+                <Link href={"/pokedex"} className={`${active === 2 && styles.active}`} tabIndex={0}>
                     < h3>Pokédex</ h3>
                 </Link>
-                <Link href={"/leaderboard"} className={`${active === 3 && styles.active}`}>
+                <Link href={"/leaderboard"} className={`${active === 3 && styles.active}`} tabIndex={0}>
                     < h3>Leaderboard</ h3>
                 </Link>
             </div>
             <div>
-                <Link href={"http://github.com/pho86"} target="_blank">
+                <Link href={"http://github.com/pho86"} target="_blank" tabIndex={0}>
                     <h3>Made by: Pho86</h3>
                 </Link>
             </div>

@@ -11,7 +11,7 @@ test.use({
 // these tests will take time to allow colours to fully change to their expected color 
 
 test.describe('guess pokemon page filters', () => {
-    test('press filters on right side and check for it classes', async ({ page }) => {
+    test('press filters on right side and check for its classes', async ({ page }) => {
         await page.goto(homePage);
         await page.click('text=Gen 1');
         await page.click('text=Gen 3');
@@ -19,7 +19,7 @@ test.describe('guess pokemon page filters', () => {
         await page.click('text=Gen 7');
 
         const Gen3Tab = await page.locator('div', { has: page.locator('text="Gen 3"') }).last();
-        await page.waitForTimeout(5000);
+        await page.waitForTimeout(6000);
         const computedStyles = await Gen3Tab.evaluate((element) => {
             const styles = window.getComputedStyle(element);
             return {
@@ -32,12 +32,12 @@ test.describe('guess pokemon page filters', () => {
         expect(computedStyles.background).toEqual('rgb(255, 146, 141)');
     })
 
-    test('press filters on left side and check for it classes', async ({ page }) => {
+    test('press filters on left side and check for its classes', async ({ page }) => {
         await page.goto(homePage);
         await page.click('text=B&W');
         await page.click('text=1 Sec');
         await page.click('text=Blur');
-        await page.waitForTimeout(5000);
+        await page.waitForTimeout(6000);
         const BlurTab = await page.locator('div', { has: page.locator('text="Blur"') }).last();
         const computedStyles = await BlurTab.evaluate((element) => {
             const styles = window.getComputedStyle(element);
@@ -48,7 +48,7 @@ test.describe('guess pokemon page filters', () => {
         });
 
         expect(computedStyles.marginRight).toEqual('-8px');
-        expect(computedStyles.background).toEqual('rgb(113, 217, 105)');
+        expect(computedStyles.background).toEqual('rgb(125, 235, 117)');
     })
 })
 

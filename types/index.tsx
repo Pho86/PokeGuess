@@ -39,5 +39,5 @@ export type LeaderboardProps = {
     BLSquare: boolean,
     TRSquare: boolean,
     BRSquare: boolean,
-    map: (children : any) => React.ReactNode
+    map: (children : any) => React.ReactNode | JSX.Element
 }

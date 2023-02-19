@@ -14,7 +14,7 @@ export default function SelectTab({
 
     return (
 
-        <div className={`${styles.select} ${checked ? styles.checked : styles.unchecked} ${side ? styles.right : styles.left}`} onClick={onClick}>
+        <div className={`${styles.select} ${checked ? styles.checked : styles.unchecked} ${side ? styles.right : styles.left}`} onClick={onClick} tabIndex={0}>
             <label>{name}</label>
             <label>{checked ? "✓" : "✗"}</label>
         </div>

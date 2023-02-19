@@ -43,7 +43,7 @@ export default function Leaderboard({
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((user: LeaderboardProps, index: number) => (
+                        {data.map((user: LeaderboardProps, _index: number) => (
                             <tr key={user.id}>
                                 <th>{user.User}</th>
                                 <th>{user.Time}</th>

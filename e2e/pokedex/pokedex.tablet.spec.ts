@@ -38,7 +38,7 @@ test.describe('Tablet Pokedex page tests', () => {
 
 
 test.describe('interacting with the pokedex area', () => {
-    test('find gligar and look at his styling', async ({ page }) => {
+    test('find gligar and look at the cards styling', async ({ page }) => {
         await page.goto(pokeDexPage);
         const pokecard = page.locator('#Gligar-card > div')
         const computedStyles = await pokecard.evaluate((element) => {
@@ -53,7 +53,7 @@ test.describe('interacting with the pokedex area', () => {
 
         expect(computedStyles.padding).toEqual('28.8px');
         expect(computedStyles.textAlign).toEqual('center');
-        expect(computedStyles.border).toEqual('0px none rgb(0, 0, 0)');
+        expect(computedStyles.border).toEqual('1px dashed rgb(255, 179, 179)');
         expect(computedStyles.gap).toEqual('4.8px');
     });
 

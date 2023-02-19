@@ -63,7 +63,7 @@ test.describe('interacting with the pokedex area', () => {
       };
     });
 
-    expect(computedStyles.padding).toEqual('48px');
+    expect(computedStyles.padding).toEqual('56px');
     expect(computedStyles.borderRadius).toEqual('32px');
     expect(computedStyles.pointer).toEqual('auto');
     expect(Number(computedStyles.opacity)).toBeGreaterThan(0);

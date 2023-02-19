@@ -12,9 +12,11 @@ export default function Popup({
         <>
             <div className={styles.background} >
 
-                <div className={styles.popup}>
-                    <button onClick={onExit}>EXIT</button>
-                    {children}
+                <div className={styles.popup_area}>
+                    <button className={styles.button} onClick={onExit}>✗</button>
+                    <div className={styles.popup}>
+                        {children}
+                    </div>
                 </div>
             </div>
         </>

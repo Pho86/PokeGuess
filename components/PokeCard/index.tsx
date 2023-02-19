@@ -38,10 +38,10 @@ export default function PokeCard({
                     {TRSquare && <div className={`${styles.square} ${styles.topright}`}> </div>}
                     {BLSquare && <div className={`${styles.square} ${styles.bottomleft}`}> </div>}
                     {BRSquare && <div className={`${styles.square} ${styles.bottomright}`}> </div>}
-                    <Image className={`${Darken && styles.darken} ${Blur && styles.blur25}`} src={`/pokemon/${Pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={250} height={250} />
+                    <Image className={`${Darken && styles.darken} ${Blur && styles.blur25}`} src={`/pokemon/${Pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={275} height={275} />
                 </div> :
                 <div className={styles.pokecard}>
-                    <Lottie animationData={Pokeball} loop={true} style={{ width: 250 }} />
+                    <Lottie animationData={Pokeball} loop={true} className={styles.lottie} />
                 </div>
             }
             <input placeholder={"Enter Pokemon Name"} className={styles.input} onKeyDown={onKeyDown} onChange={onChange} value={value} disabled={disabled} />

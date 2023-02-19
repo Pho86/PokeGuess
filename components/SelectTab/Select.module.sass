@@ -1,0 +1,47 @@
+@use 'variables.module.scss' as v
+
+.select
+    display: flex
+    gap: .7em
+    justify-content: space-between
+    padding: 1em
+    font-weight: bold
+    cursor: pointer
+    transition: all .1s ease-in-out
+    z-index: 0
+    label
+        cursor: pointer
+        user-select: none
+.checked
+    background-color: #77ee6f
+    filter: drop-shadow(4px 4px 0px #53d94a)
+    &:hover
+        background-color: #71d969
+        
+.unchecked
+    background-color: #ff928d
+    filter: drop-shadow(4px 4px 0px #d46a65)
+    &:hover
+        background-color: #eb8984
+
+.left
+    border-radius: 1em 0em 0em 1em
+    margin-right: -.5em
+.right
+    border-radius: 0em 1em 1em 0em
+    margin-left: -.5em
+
+@media (max-width:768px)
+    .select
+        flex-direction: column
+        gap: .5em
+        padding: .6em
+        label 
+            font-size: small
+
+@media (max-width:414px)
+    .select
+        flex-direction: column
+        gap: 0em
+        padding: .5em
+

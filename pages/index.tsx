@@ -3,49 +3,55 @@ import PokeDex from "@/data/pokedex.json";
 import { useState, useEffect, useRef } from 'react';
 import styles from "@/styles/home.module.scss";
 import { selectRandomFromArray, generateRandomNumber } from "@/util";
-import Select from '@/components/Select';
 import PokeCard from '@/components/PokeCard';
 import Button from '@/components/Button';
 import NavBar from '@/components/NavBar';
 import axios from "axios";
 import Popup from '@/components/ScorePopup';
 import { pokemonProps } from "@/types";
-
+import SelectTab from '@/components/SelectTab';
+import { useRouter } from 'next/router';
 
 export default function Home() {
 
-  const [Gen1, setGen1] = useState(true)
-  const [Gen2, setGen2] = useState(false)
-  const [Gen3, setGen3] = useState(false)
-  const [Gen4, setGen4] = useState(false)
-  const [Gen5, setGen5] = useState(false)
-  const [Gen6, setGen6] = useState(false)
-  const [Gen7, setGen7] = useState(false)
-  const [Gen8, setGen8] = useState(false)
+  //pokedex
+  const [SortPokeDex, setPokedex] = useState([] as any);
+  const [Pokemon, setPokemon] = useState("" as any)
+  const [PreviousPokemon, setPreviousPokemon] = useState("" as any)
+  const [PreviousGuess, setPreviousGuess] = useState("")
 
+  // pokedex filters
+  const [Gen1, setGen1] = useState(true)
+  const [Gen2, setGen2] = useState(true)
+  const [Gen3, setGen3] = useState(true)
+  const [Gen4, setGen4] = useState(true)
+  const [Gen5, setGen5] = useState(true)
+  const [Gen6, setGen6] = useState(true)
+  const [Gen7, setGen7] = useState(true)
+  const [Gen8, setGen8] = useState(true)
   // Gen9 is not in JSON File, used for testing purposes
   const [Gen9, setGen9] = useState(false)
 
+  // image filters
   const [OneSecond, setOneSecond] = useState(false)
-
-  const [SortPokeDex, setPokedex] = useState([] as any);
-  const [User, setUser] = useState("")
   const [Darken, toggleDarken] = useState(false);
   const [Blur, setBlur] = useState(false);
-  const [Score, setScore] = useState(0);
-  const [Time, setTime] = useState(0);
   const [TLSquare, setTLSquare] = useState(false)
   const [TRSquare, setTRSquare] = useState(false)
   const [BLSquare, setBLSquare] = useState(false)
   const [BRSquare, setBRSquare] = useState(false)
-  const [Pokemon, setPokemon] = useState("" as any)
-  const [PreviousPokemon, setPreviousPokemon] = useState("" as any)
-  const [PreviousGuess, setPreviousGuess] = useState("")
+
+  // game states
+  const [Time, setTime] = useState(0);
+  const [User, setUser] = useState("")
+  const [Score, setScore] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [Disabled, toggleDisabled] = useState(true)
   const [PopUp, togglePopUp] = useState(false);
   const [Win, toggleWin] = useState(false)
   const Timer = useRef(0 as any);
+
+  const router = useRouter();
 
   const TimerStart = async () => {
     let x = 0;
@@ -65,8 +71,8 @@ export default function Home() {
     return pokedex
   }
 
-  // find alternative to this if statement filter later?
   const FilterPokeDex = async () => {
+    setPokedex([])
     const pokedex = await FilterPokemon()
     let genPokeDex: any = [];
     await pokedex.filter((pokemon: pokemonProps, i: number) => {
@@ -120,6 +126,7 @@ export default function Home() {
     setPokedex(genPokeDex);
   }
 
+
   const GeneratePokemon = async (remove: boolean) => {
     let PokemonNum;
     if (SortPokeDex.length >= 1) {
@@ -129,6 +136,7 @@ export default function Home() {
     }
     else {
       toggleWin(true)
+      clearInterval(Timer.current)
     }
     Delay()
   }
@@ -163,8 +171,8 @@ export default function Home() {
   }
 
   const postData = async () => {
+    router.push('/leaderboard')
     axios.post('/api/score', { User, Time, Score, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare })
-    alert('your data has been sent.')
   }
 
   const Delay = async () => {
@@ -183,7 +191,7 @@ export default function Home() {
   }
 
   const StartGame = async (remove: boolean) => {
-    if (!Gen1 && !Gen2 && !Gen3 && !Gen4 && !Gen5 && !Gen6 && !Gen7 && !Gen8) return alert("you need to select a generation")
+    if (!Gen1 && !Gen2 && !Gen3 && !Gen4 && !Gen5 && !Gen6 && !Gen7 && !Gen8 && !Gen9) return alert("you need to select a generation")
     setPreviousPokemon(Pokemon);
     await FilterPokeDex()
     if (remove) GeneratePokemon(true);
@@ -219,7 +227,7 @@ export default function Home() {
         <title>Home | PokéGuess</title>
       </Head>
 
-      <NavBar active={1}/>
+      <NavBar active={1} />
       <main className={styles.main}>
         <>
           <div className={styles.CardCol}>
@@ -234,9 +242,9 @@ export default function Home() {
 
             <div className={styles.CardRow}>
               <div className={styles.CardCol}>
-                <Select name="B&W" checked={Darken} onChange={async (event: any) => { toggleDarken(!Darken); EndGame(true) }} />
-                <Select name="Blur" checked={Blur} onChange={async (event: any) => { setBlur(!Blur); EndGame(true) }} />
-                <Select name="1 Second" checked={OneSecond} onChange={(event: any) => { setOneSecond(!OneSecond); EndGame(true) }} />
+                <SelectTab name="B&W" checked={Darken} side={false} onClick={() => { toggleDarken(!Darken); EndGame(true) }} />
+                <SelectTab name="Blur" checked={Blur} side={false} onClick={() => { setBlur(!Blur); EndGame(true) }} />
+                <SelectTab name="1 Sec" checked={OneSecond} side={false} onClick={() => { setOneSecond(!OneSecond); EndGame(true) }} />
               </div>
 
               <div className={styles.PokeCard}>
@@ -244,38 +252,40 @@ export default function Home() {
                 {Disabled ? <Button onClick={() => { StartGame(true) }} type={"button"}>Start!</Button> : <div className={styles.buttons}><Button onClick={() => { GeneratePokemon(false) }} type={"button"}>I don&apos;t know</Button><Button onClick={() => { SubmitInput() }} type={"button"}>Submit</Button></div>}
               </div>
               <div className={styles.CardCol}>
-                <Select name="Gen 1" checked={Gen1} onChange={(event: any) => { setGen1(!Gen1); EndGame(true) }} />
-                <Select name="Gen 2" checked={Gen2} onChange={(event: any) => { setGen2(!Gen2); EndGame(true) }} />
-                <Select name="Gen 3" checked={Gen3} onChange={(event: any) => { setGen3(!Gen3); EndGame(true) }} />
-                <Select name="Gen 4" checked={Gen4} onChange={(event: any) => { setGen4(!Gen4); EndGame(true); }} />
-                <Select name="Gen 5" checked={Gen5} onChange={(event: any) => { setGen5(!Gen5); EndGame(true); }} />
-                <Select name="Gen 6" checked={Gen6} onChange={(event: any) => { setGen6(!Gen6); EndGame(true); }} />
-                <Select name="Gen 7" checked={Gen7} onChange={(event: any) => { setGen7(!Gen7); EndGame(true); }} />
-                <Select name="Gen 8" checked={Gen8} onChange={(event: any) => { setGen8(!Gen8); EndGame(true); }} />
+                <SelectTab name="Gen 1" checked={Gen1} side={true} onClick={() => { setGen1(!Gen1); EndGame(true) }} />
+                <SelectTab name="Gen 2" checked={Gen2} side={true} onClick={() => { setGen2(!Gen2); EndGame(true) }} />
+                <SelectTab name="Gen 3" checked={Gen3} side={true} onClick={() => { setGen3(!Gen3); EndGame(true) }} />
+                <SelectTab name="Gen 4" checked={Gen4} side={true} onClick={() => { setGen4(!Gen4); EndGame(true) }} />
+                <SelectTab name="Gen 5" checked={Gen5} side={true} onClick={() => { setGen5(!Gen5); EndGame(true) }} />
+                <SelectTab name="Gen 6" checked={Gen6} side={true} onClick={() => { setGen6(!Gen6); EndGame(true) }} />
+                <SelectTab name="Gen 7" checked={Gen7} side={true} onClick={() => { setGen7(!Gen7); EndGame(true) }} />
+                <SelectTab name="Gen 8" checked={Gen8} side={true} onClick={() => { setGen8(!Gen8); EndGame(true) }} />
               </div>
             </div>
           </div>
 
 
           {PopUp && <Popup onExit={() => { togglePopUp(false) }}>
-            <p>You guessed {PreviousGuess} and it was {PreviousPokemon.pokemon_name}.</p>
-            <p>Your score was {Score} seconds.</p>
-            <p>Your Time was {Time}.</p>
-            <input type="text" value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
-            <button onClick={async () => { if (User) { await postData(); togglePopUp(false) } else alert('put a name please') }}>Submit Score</button>
+            <h3>You Lost.</h3>
+            <p>You guessed <b>{PreviousGuess}</b> and it was <b>{PreviousPokemon.pokemon_name}</b>.</p>
+            <p>Your score was {Score}.</p>
+            <p>Your time was {Time} seconds.</p>
+            <input type="text" className={styles.popup_input} value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
+            <Button onClick={async () => { if (User) { await postData(); togglePopUp(false) } else alert('put a name please') }}>Submit Score</Button>
           </Popup>}
 
           {Win && <Popup onExit={() => { toggleWin(false) }}>
-            <p>Congratulations! You completed the PokeDex.</p>
-            <p>Your score was {Score} seconds.</p>
-            <p>Your time was {Time}.</p>
-            <input type="text" value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
-            <button onClick={async () => { if (User) { await postData(); toggleWin(false) } else alert('put a name please') }}>Submit Score</button>
+            <h3>Congratulations!</h3>
+            <p>You completed the PokeDex.</p>
+            <p>Your score was {Score}.</p>
+            <p>Your time was {Time} seconds.</p>
+            <input type="text" className={styles.popup_input} value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
+            <Button onClick={async () => { if (User) { await postData(); toggleWin(false) } else alert('put a name please') }}>Submit Score</Button>
           </Popup>}
 
         </>
       </main>
     </>
-    
+
   )
 }

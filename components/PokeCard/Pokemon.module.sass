@@ -35,10 +35,23 @@ div
         padding: 1em
         border-radius: .8em
         outline: none
-        text-align: center 
+        text-align: center
         border: 2px solid #d7ddf5
 
 .pokecard
     align-self: center
-    img 
-        pointer-events: none
+    user-select: none
+    pointer-events: none
+    img
+    .lottie 
+        width: 275px
+
+@media (max-width:768px)
+    .pokecard > img, .pokecard > .lottie
+        width: 250px
+        height: auto
+
+@media (max-width:414px)
+    .pokecard > img, .pokecard > .lottie
+        width: 225px
+        height: auto

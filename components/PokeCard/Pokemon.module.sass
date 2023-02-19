@@ -5,15 +5,15 @@ div
         filter: brightness(0%)
 
     .blur25
-        filter: blur(.5rem)
+        filter: blur(8px)
 
     .darken.blur25
-        filter: brightness(0%) blur(.5rem)
+        filter: brightness(0%) blur(6px)
 
     div
     .square
-        width: 125px
-        height: 125px
+        width: 140px
+        height: 140px
         background-color: black
         position: absolute
         z-index: 50
@@ -22,13 +22,13 @@ div
         transform: translate(0)
 
     .topright
-        transform: translate(125px)
+        transform: translate(140px)
 
     .bottomleft
-        transform: translate(0px, 125px)
+        transform: translate(0px, 140px)
 
     .bottomright
-        transform: translate(125px, 125px)
+        transform: translate(140px, 140px)
 
     .input
         width: 100%
@@ -43,15 +43,41 @@ div
     user-select: none
     pointer-events: none
     img
-    .lottie 
+    .lottie
         width: 275px
 
 @media (max-width:768px)
     .pokecard > img, .pokecard > .lottie
         width: 250px
         height: auto
+    div
+        div
+            .square
+                width: 130px
+                height: 130px
+            .topright
+                transform: translate(130px)
+
+            .bottomleft
+                transform: translate(0px, 130px)
+
+            .bottomright
+                transform: translate(130px, 130px)
 
 @media (max-width:414px)
     .pokecard > img, .pokecard > .lottie
         width: 225px
         height: auto
+    div
+        div
+            .square
+                width: 115px
+                height: 115px
+            .topright
+                transform: translate(115px)
+
+            .bottomleft
+                transform: translate(0px, 115px)
+
+            .bottomright
+                transform: translate(115px, 115px)

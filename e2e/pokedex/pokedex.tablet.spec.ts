@@ -56,5 +56,7 @@ test.describe('interacting with the pokedex area', () => {
         expect(computedStyles.border).toEqual('0px none rgb(0, 0, 0)');
         expect(computedStyles.gap).toEqual('4.8px');
     });
+
+    
 })
 

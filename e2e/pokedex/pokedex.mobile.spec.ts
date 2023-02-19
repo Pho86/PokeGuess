@@ -9,7 +9,7 @@ test.use({
 })
 
 test.describe('Mobile Pokedex page tests', () => {
-  test('checking main body styling changes', async ({ page }) => {
+  test('checking main body for mobile styling changes', async ({ page }) => {
     await page.goto(pokeDexPage);
     const body = page.locator('body');
     const computedStyles = await body.evaluate((element) => {

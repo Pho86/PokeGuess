@@ -44,7 +44,7 @@ export default function PokeCard({
                     <Lottie animationData={Pokeball} loop={true} className={styles.lottie} />
                 </div>
             }
-            <input placeholder={"Enter Pokemon Name"} className={styles.input} onKeyDown={onKeyDown} onChange={onChange} value={value} disabled={disabled} />
+            <input placeholder={"Enter Pokémon Name"} type="string" className={styles.input} onKeyDown={onKeyDown} onChange={onChange} value={value} disabled={disabled} />
         </>
     )
 }

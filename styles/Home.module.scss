@@ -39,6 +39,7 @@
             padding: 1em;
             border-radius: 1em 1em 0em 0;
             font-weight: bold;
+            filter: drop-shadow(4px 4px 0px #d46a65);
         }
     }
 
@@ -50,9 +51,9 @@
     flex-direction: column;
     justify-items: center;
     background-color: #febaba;
-    padding: 3em;
+    padding: 4em;
     border-radius: 1.5em;
-    gap: 1.5em;
+    gap: 2em;
     z-index: 10;    
     filter: drop-shadow(0px 8px 0px #fd8383);
 }
@@ -66,4 +67,13 @@
     padding: 1em;
     border-radius: 1em;
     border: 1px solid v.$primary-color
+}
+
+@media screen and (max-width:768px) {
+    div {
+        .PokeCard {
+            padding: 3em;
+            gap:1.5em;
+        }
+    }   
 }

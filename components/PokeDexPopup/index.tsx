@@ -1,5 +1,5 @@
 import styles from "./PokeDexPopup.module.sass";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { pokemonProps } from "@/types";
 
@@ -18,7 +18,7 @@ export default function PokeDexPopup({
                     <>
                         <div className={styles.background} onClick={onExit}> </div>
                         <div className={styles.area} >
-                            <motion.div className={styles.popup}
+                            <m.div className={styles.popup}
                                 initial={{ y: -250, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 exit={{ y: 250, opacity: 0 }}
@@ -48,7 +48,7 @@ export default function PokeDexPopup({
                                     <p><span className={styles.ability}>{pokemon.ability_1}</span>{pokemon.ability_2 && <span className={styles.ability}>, {pokemon.ability_2}</span>}{pokemon.ability_3 && <span className={styles.ability}>, {pokemon.ability_3}</span>}</p>
 
                                 </div>
-                            </motion.div>
+                            </m.div>
                         </div>
                     </>
                 }

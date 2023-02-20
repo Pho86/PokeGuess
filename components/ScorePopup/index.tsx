@@ -1,5 +1,5 @@
 import styles from "./ScorePopup.module.scss";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 export default function Popup({
     children,
@@ -15,7 +15,7 @@ export default function Popup({
         <AnimatePresence>
             {show && <div className={styles.background} >
 
-                <motion.div className={styles.popup_area} 
+                <m.div className={styles.popup_area} 
                 initial={{y:-150, opacity: 0}}
                 animate={{y:0, opacity: 1}}
                 exit={{y:200, opacity: 0}}
@@ -24,7 +24,7 @@ export default function Popup({
                     <div className={styles.popup}>
                         {children}
                     </div>
-                </motion.div>
+                </m.div>
             </div> }
         </AnimatePresence>
     )

@@ -3,6 +3,8 @@ import type { AppProps } from 'next/app'
 import { Figtree } from '@next/font/google'
 import Head from 'next/head';
 
+import { LazyMotion, domAnimation } from 'framer-motion';
+import NextProgress from "next-progress";
 
 const figtree = Figtree({ subsets: ['latin'] })
 
@@ -20,8 +22,12 @@ export default function App({ Component, pageProps }: AppProps) {
         }
         
       `}</style>
+      
+    <NextProgress delay={300} options={{ showSpinner: false }} />
 
-    <Component {...pageProps} />
+    <LazyMotion features={domAnimation}>
+      <Component {...pageProps} />
+    </LazyMotion>
 
   </>
 

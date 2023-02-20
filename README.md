@@ -1,5 +1,5 @@
 <div align="center">
-    <img alt="PokeGuess Logo" src="/logo.png"/>
+    <img alt="PokeGuess Logo" src="/public/logo.svg" style="width:200px;"/>
 </div>
 
 # PokéGuess

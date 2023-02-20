@@ -1,3 +1,5 @@
+@use 'variables.module.scss' as v;
+
 .main {
     display: flex;
     align-items: center;
@@ -7,7 +9,7 @@
     overflow-x: hidden;
     min-height: 100vh;
     min-height: 100dvh;
-    gap: 1em;
+    gap: 1.5em;
     padding: 3em;
 }
 
@@ -40,7 +42,8 @@
             background-color: rgb(228, 226, 226);
         }
         .see_more {
-            color:rgb(59, 59, 59)
+            color: v.$third-color;
+            font-weight: bold;
         }
     }
 

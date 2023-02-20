@@ -1,5 +1,6 @@
 import styles from "./NavBar.module.sass"
 import Link from "next/link"
+import Image from "next/image"
 export default function NavBar({
     active,
 }: {
@@ -8,12 +9,15 @@ export default function NavBar({
     return (
         <nav className={styles.navBar}>
             <div className={styles.topNav}>
-                <Link href={"/"}>
-                    <h1>PokéGuess</h1>
+                <Link href={"/"} className={`${active === 1 && styles.active}`}>
+                    <Image src="/logo.svg" alt="logo" width={50} height={50} />
+                    <h1>
+                        PokéGuess
+                    </h1>
                 </Link>
-                <Link href={"/"} className={`${active === 1 && styles.active}`} tabIndex={0}>
+                {/* <Link href={"/"} className={`${active === 1 && styles.active} ${styles.hide}`} tabIndex={0}>
                     < h3>Home</ h3>
-                </Link>
+                </Link> */}
                 <Link href={"/pokedex"} className={`${active === 2 && styles.active}`} tabIndex={0}>
                     < h3>Pokédex</ h3>
                 </Link>
@@ -23,7 +27,7 @@ export default function NavBar({
             </div>
             <div>
                 <Link href={"http://github.com/pho86"} target="_blank" tabIndex={0}>
-                    <h3>Made by: Pho86</h3>
+                    <h3>Made by: Pho</h3>
                 </Link>
             </div>
 

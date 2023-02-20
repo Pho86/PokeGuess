@@ -12,6 +12,7 @@ export default function PokeDexCard({
 }) {
     return (
         <motion.div className={styles.pokecard} onClick={() => { onClick(pokemon) }}
+        tabIndex={0}
             initial={{ opacity: .6, x: -25 }}
             whileInView={{ opacity: 1, x: 0 }}
             exit={{ opacity: .6, x: 25 }}

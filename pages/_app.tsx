@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Head>
       <meta name="description" content="Who's that Pokémon? with PokéGuess." />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" href="/logo.svg" />
     </Head>
 
     <style jsx global>{`

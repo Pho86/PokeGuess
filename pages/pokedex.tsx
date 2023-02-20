@@ -26,12 +26,10 @@ export default function PokeDex({
 
     const openCard = async (pokemon: pokemonProps) => {
         setOpenCard(pokemon)
-        console.log(pokemon)
     }
     
     useEffect(() => {
         FilterPokemon()
-        console.log(SortedDex)
     }, [])
 
     return (

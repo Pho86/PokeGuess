@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import NavBar from '@/components/NavBar';
 import { LeaderboardProps } from '@/types';
 import Popup from '@/components/ScorePopup';
-import { AnimatePresence } from 'framer-motion';
 
 export default function Leaderboard({
     data

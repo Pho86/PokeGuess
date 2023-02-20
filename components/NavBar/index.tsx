@@ -15,9 +15,6 @@ export default function NavBar({
                         PokéGuess
                     </h1>
                 </Link>
-                {/* <Link href={"/"} className={`${active === 1 && styles.active} ${styles.hide}`} tabIndex={0}>
-                    < h3>Home</ h3>
-                </Link> */}
                 <Link href={"/pokedex"} className={`${active === 2 && styles.active}`} tabIndex={0}>
                     < h3>Pokédex</ h3>
                 </Link>

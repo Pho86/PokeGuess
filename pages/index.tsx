@@ -57,6 +57,7 @@ export default function Home() {
   // sound states
   const [Volume, setVolume] = useState(1);
   const [correct] = useSound('/sounds/ding.mp3', { volume: Volume });
+  const [wrong] = useSound('/sounds/wrong.mp3', { volume: Volume });
 
   const router = useRouter();
 
@@ -161,6 +162,7 @@ export default function Home() {
       } else {
         setPreviousGuess(event.target.value)
         EndGame(false)
+        wrong()
       }
     }
   }

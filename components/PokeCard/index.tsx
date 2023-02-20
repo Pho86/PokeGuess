@@ -31,7 +31,7 @@ export default function PokeCard({
 }) {
     return (
         <>
-            <h1>Who&apos;s That Pokémon?</h1>
+            <h1 className={styles.header}>Who&apos;s That Pokémon?</h1>
             {Pokemon ?
                 <div className={styles.pokecard}>
                     {TLSquare && <div className={`${styles.square} ${styles.topleft}`}> </div>}

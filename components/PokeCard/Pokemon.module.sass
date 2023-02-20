@@ -1,8 +1,12 @@
 @use 'variables.module.scss' as v
 
+.header 
+    font-size: 2rem
+
 div
     .darken
         filter: brightness(0%)
+
 
     .blur25
         filter: blur(8px)
@@ -50,6 +54,8 @@ div
     .pokecard > img, .pokecard > .lottie
         width: 250px
         height: auto
+    .header 
+        font-size: 1.9rem
     div
         div
             .square
@@ -66,18 +72,21 @@ div
 
 @media (max-width:414px)
     .pokecard > img, .pokecard > .lottie
-        width: 225px
+        width: 200px
         height: auto
     div
         div
             .square
-                width: 115px
-                height: 115px
+                width: 100px
+                height: 100px
             .topright
-                transform: translate(115px)
+                transform: translate(100px)
 
             .bottomleft
-                transform: translate(0px, 115px)
+                transform: translate(0px, 100px)
 
             .bottomright
-                transform: translate(115px, 115px)
+                transform: translate(100px, 100px)
+
+    .header 
+        font-size: 1.8rem

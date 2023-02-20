@@ -30,7 +30,7 @@ export default function PokeDexPopup({
                                 </div>
                                 <div className={styles.col}>
                                     <h2><span className={styles.number}>#{pokemon.pokedex_number}</span> {pokemon.pokemon_name}</h2>
-                                    <h4>{pokemon.genus} Pokemon</h4> 
+                                    <h4>The {pokemon.genus} Pokemon</h4> 
                                     <p>Height: <strong>{pokemon.height} m</strong> Weight: <strong>{pokemon.weight} kg</strong></p>
                                     <p className={styles.tags}><span className={`${pokemon.type_1} ${styles.tag}`}>{pokemon.type_1}</span> {pokemon.type_2 && <span className={`${pokemon.type_2} ${styles.tag}`}>{pokemon.type_2}</span>}</p>
 

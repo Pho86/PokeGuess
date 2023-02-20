@@ -11,6 +11,9 @@ import Popup from '@/components/ScorePopup';
 import { pokemonProps } from "@/types";
 import SelectTab from '@/components/SelectTab';
 import { useRouter } from 'next/router';
+import useSound from 'use-sound';
+
+
 
 export default function Home() {
 
@@ -50,6 +53,10 @@ export default function Home() {
   const [PopUp, togglePopUp] = useState(false);
   const [Win, toggleWin] = useState(false)
   const Timer = useRef(0 as any);
+  
+  // sound states
+  const [Volume, setVolume] = useState(1);
+  const [correct] = useSound('/sounds/ding.mp3', { volume: Volume });
 
   const router = useRouter();
 
@@ -72,8 +79,8 @@ export default function Home() {
   }
 
   const FilterPokeDex = async () => {
-    setPokedex([])
     const pokedex = await FilterPokemon()
+    setPokedex([])
     let genPokeDex: any = [];
     await pokedex.filter((pokemon: pokemonProps, i: number) => {
       if (Gen1) {
@@ -150,6 +157,7 @@ export default function Home() {
         setPreviousGuess(event.target.value)
         setInputValue("")
         setScore(Score + 1)
+        correct()
       } else {
         setPreviousGuess(event.target.value)
         EndGame(false)
@@ -171,8 +179,8 @@ export default function Home() {
   }
 
   const postData = async () => {
+    await axios.post('/api/score', { User, Time, Score, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare })
     router.push('/leaderboard')
-    axios.post('/api/score', { User, Time, Score, Darken, Blur, OneSecond, Gen1, Gen2, Gen3, Gen4, Gen5, Gen6, Gen7, Gen8, TLSquare, BLSquare, TRSquare, BRSquare })
   }
 
   const Delay = async () => {
@@ -245,6 +253,7 @@ export default function Home() {
                 <SelectTab name="B&W" checked={Darken} side={false} onClick={() => { toggleDarken(!Darken); EndGame(true) }} />
                 <SelectTab name="Blur" checked={Blur} side={false} onClick={() => { setBlur(!Blur); EndGame(true) }} />
                 <SelectTab name="1 Sec" checked={OneSecond} side={false} onClick={() => { setOneSecond(!OneSecond); EndGame(true) }} />
+                <SelectTab name="Sound" checked={Volume === 1} side={false} onClick={() => { if (Volume === 1) setVolume(0); else { setVolume(1) } }} />
               </div>
 
               <div className={styles.PokeCard}>
@@ -252,14 +261,14 @@ export default function Home() {
                 {Disabled ? <Button onClick={() => { StartGame(true) }} type={"button"}>Start!</Button> : <div className={styles.buttons}><Button onClick={() => { GeneratePokemon(false) }} type={"button"}>I don&apos;t know</Button><Button onClick={() => { SubmitInput() }} type={"button"}>Submit</Button></div>}
               </div>
               <div className={styles.CardCol}>
-                <SelectTab name="Gen 1" checked={Gen1} side={true} onClick={() => { setGen1(!Gen1); EndGame(true) }} />
-                <SelectTab name="Gen 2" checked={Gen2} side={true} onClick={() => { setGen2(!Gen2); EndGame(true) }} />
-                <SelectTab name="Gen 3" checked={Gen3} side={true} onClick={() => { setGen3(!Gen3); EndGame(true) }} />
-                <SelectTab name="Gen 4" checked={Gen4} side={true} onClick={() => { setGen4(!Gen4); EndGame(true) }} />
-                <SelectTab name="Gen 5" checked={Gen5} side={true} onClick={() => { setGen5(!Gen5); EndGame(true) }} />
-                <SelectTab name="Gen 6" checked={Gen6} side={true} onClick={() => { setGen6(!Gen6); EndGame(true) }} />
-                <SelectTab name="Gen 7" checked={Gen7} side={true} onClick={() => { setGen7(!Gen7); EndGame(true) }} />
-                <SelectTab name="Gen 8" checked={Gen8} side={true} onClick={() => { setGen8(!Gen8); EndGame(true) }} />
+                <SelectTab name="Gen 1" checked={Gen1} side={true} onClick={() => { setGen1(!Gen1); EndGame(true); FilterPokeDex() }} />
+                <SelectTab name="Gen 2" checked={Gen2} side={true} onClick={() => { setGen2(!Gen2); EndGame(true); FilterPokeDex() }} />
+                <SelectTab name="Gen 3" checked={Gen3} side={true} onClick={() => { setGen3(!Gen3); EndGame(true); FilterPokeDex() }} />
+                <SelectTab name="Gen 4" checked={Gen4} side={true} onClick={() => { setGen4(!Gen4); EndGame(true); FilterPokeDex() }} />
+                <SelectTab name="Gen 5" checked={Gen5} side={true} onClick={() => { setGen5(!Gen5); EndGame(true); FilterPokeDex() }} />
+                <SelectTab name="Gen 6" checked={Gen6} side={true} onClick={() => { setGen6(!Gen6); EndGame(true); FilterPokeDex() }} />
+                <SelectTab name="Gen 7" checked={Gen7} side={true} onClick={() => { setGen7(!Gen7); EndGame(true); FilterPokeDex() }} />
+                <SelectTab name="Gen 8" checked={Gen8} side={true} onClick={() => { setGen8(!Gen8); EndGame(true); FilterPokeDex() }} />
               </div>
             </div>
           </div>
@@ -282,7 +291,6 @@ export default function Home() {
             <input type="text" className={styles.popup_input} value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
             <Button onClick={async () => { if (User) { await postData(); toggleWin(false) } else alert('put a name please') }}>Submit Score</Button>
           </Popup>
-
         </>
       </main>
     </>

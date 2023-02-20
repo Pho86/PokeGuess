@@ -20,7 +20,7 @@ export default function PokeDexCard({
             whileHover={{
                 scale: 1.05,
                 transition: { duration: .5 },
-                y: -10
+                y: -8
             }}
             id={pokemon.pokemon_name + "-card"}
         >

@@ -4,7 +4,7 @@ export default function SelectTab({
     onClick,
     checked,
     name,
-    side
+    side,
 }: {
     name: string;
     checked: boolean;

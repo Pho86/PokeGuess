@@ -1,4 +1,4 @@
-import styles from "./ScorePopup.module.scss";
+import styles from "./ScorePopup.module.sass";
 import { m, AnimatePresence } from "framer-motion";
 
 export default function Popup({

@@ -53,7 +53,7 @@ export default function Home() {
   const [PopUp, togglePopUp] = useState(false);
   const [Win, toggleWin] = useState(false)
   const Timer = useRef(0 as any);
-  
+
   // sound states
   const [Volume, setVolume] = useState(1);
   const [correct] = useSound('/sounds/ding.mp3', { volume: Volume });
@@ -201,7 +201,11 @@ export default function Home() {
   }
 
   const StartGame = async (remove: boolean) => {
-    if (!Gen1 && !Gen2 && !Gen3 && !Gen4 && !Gen5 && !Gen6 && !Gen7 && !Gen8 && !Gen9) return alert("you need to select a generation")
+    if (!Gen1 && !Gen2 && !Gen3 && !Gen4 && !Gen5 && !Gen6 && !Gen7 && !Gen8 && !Gen9) {
+      wrong()
+      alert("you need to select a generation")
+      return;
+    }
     setPreviousPokemon(Pokemon);
     await FilterPokeDex()
     if (remove) GeneratePokemon(true);
@@ -293,6 +297,7 @@ export default function Home() {
             <input type="text" className={styles.popup_input} value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
             <Button onClick={async () => { if (User) { await postData(); toggleWin(false) } else alert('put a name please') }}>Submit Score</Button>
           </Popup>
+          
         </>
       </main>
     </>

@@ -24,8 +24,11 @@ export default function Leaderboard({
                 <title>Leaderboard | PokéGuess</title>
             </Head>
             <NavBar active={3} />
+
             <main className={styles.main}>
+
                 <h1>PokéGuess Leaderboard</h1>
+                
                 <table className={styles.table}>
                     <thead>
                         <tr>
@@ -71,44 +74,45 @@ export default function Leaderboard({
                     </tbody>
                 </table>
 
-                    <Popup onExit={() => { togglePopUp(false) }} show={PopUp}>
-                        <h1>{userinfo.User}&apos;s info</h1>
-                        <p>Their score was <b>{userinfo.Score}</b>.</p>
-                        <p>Their time was <b>{userinfo.Time} seconds</b>.</p>
-                        <p>They attempted the quiz on <b>{new Date(userinfo.createdAt).toLocaleDateString('en-GB')}</b>.</p>
-                        <table className={styles.popuptable}>
-                            <thead>
-                                <tr>
-                                    <th>B&W</th>
-                                    <th >Blur</th>
-                                    <th >1 Sec</th>
-                                    <th >I</th>
-                                    <th >II</th>
-                                    <th >III</th>
-                                    <th >IV</th>
-                                    <th >V</th>
-                                    <th >VI</th>
-                                    <th >VII</th>
-                                    <th >VIII</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th className={`${userinfo.Darken ? styles.true_sm : styles.false_sm}`}>{userinfo.Darken ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.Blur ? styles.true_sm : styles.false_sm}`}>{userinfo.Blur ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.OneSecond ? styles.true_sm : styles.false_sm}`}>{userinfo.OneSecond ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.Gen1 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen1 ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.Gen2 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen2 ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.Gen3 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen3 ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.Gen4 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen4 ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.Gen5 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen5 ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.Gen6 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen6 ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.Gen7 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen7 ? "✓" : "✗"}</th>
-                                    <th className={`${userinfo.Gen8 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen8 ? "✓" : "✗"}</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </Popup>
+                <Popup onExit={() => { togglePopUp(false) }} show={PopUp}>
+                    <h1>{userinfo.User}&apos;s info</h1>
+                    <p>Their score was <b>{userinfo.Score}</b>.</p>
+                    <p>Their time was <b>{userinfo.Time} seconds</b>.</p>
+                    <p>They attempted the quiz on <b>{new Date(userinfo.createdAt).toLocaleDateString('en-GB')}</b>.</p>
+                    <table className={styles.popuptable}>
+                        <thead>
+                            <tr>
+                                <th>B&W</th>
+                                <th>Blur</th>
+                                <th>1 Sec</th>
+                                <th>I</th>
+                                <th>II</th>
+                                <th>III</th>
+                                <th>IV</th>
+                                <th>V</th>
+                                <th>VI</th>
+                                <th>VII</th>
+                                <th>VIII</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th className={`${userinfo.Darken ? styles.true_sm : styles.false_sm}`}>{userinfo.Darken ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.Blur ? styles.true_sm : styles.false_sm}`}>{userinfo.Blur ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.OneSecond ? styles.true_sm : styles.false_sm}`}>{userinfo.OneSecond ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.Gen1 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen1 ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.Gen2 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen2 ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.Gen3 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen3 ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.Gen4 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen4 ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.Gen5 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen5 ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.Gen6 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen6 ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.Gen7 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen7 ? "✓" : "✗"}</th>
+                                <th className={`${userinfo.Gen8 ? styles.true_sm : styles.false_sm}`}>{userinfo.Gen8 ? "✓" : "✗"}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </Popup>
+
             </main>
         </>
     )

@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
         
       `}</style>
       
-    <NextProgress delay={300} options={{ showSpinner: false }} />
+    <NextProgress delay={300} options={{ showSpinner: false }} color="#67b6ff"/>
 
     <LazyMotion features={domAnimation}>
       <Component {...pageProps} />

@@ -32,7 +32,7 @@ test.describe('interacting with the pokedex area', () => {
     await page.click('text=Gardevoir')
 
     await expect(page.locator('h2')).toContainText('#282 Gardevoir');
-    await expect(page.locator('h4')).toContainText('Embrace Pokemon');
+    await expect(page.locator('h4')).toContainText('The Embrace Pokemon');
     const pokecard = page.locator('#Gardevoir-popup')
 
     const computedStyles = await pokecard.evaluate((element) => {

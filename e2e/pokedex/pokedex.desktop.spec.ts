@@ -37,7 +37,7 @@ test.describe('Desktop Pokedex page tests', () => {
     expect(computedStyles.gridGap).toEqual('24px');
 
   })
-  test('check pokedex grid elements', async ({ page }) => {
+  test('check pokedex grid elements for until generation 8', async ({ page }) => {
     await page.goto(pokeDexPage)
 
     await expect(page.locator('div > h3')).toHaveCount(898);
@@ -45,12 +45,12 @@ test.describe('Desktop Pokedex page tests', () => {
 })
 
 
-test.describe('interacting with the pokedex area', () => {
+test.describe('interacting with the pokedex area | Desktop', () => {
   test('find and click Garchomp in the pokedex and make sure popup appears', async ({ page }) => {
     await page.goto(pokeDexPage);
     await page.click('text=Garchomp')
     await expect(page.locator('h2')).toContainText('#445 Garchomp');
-    await expect(page.locator('h4')).toContainText('Mach Pokemon');
+    await expect(page.locator('h4')).toContainText('The Mach Pokemon');
     const pokecard = page.locator('#Garchomp-popup')
 
     const computedStyles = await pokecard.evaluate((element) => {

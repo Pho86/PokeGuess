@@ -25,7 +25,7 @@ test.describe('Desktop Home page tests', () => {
     test('check navbar routes to github and check for a new page', async ({ page, context }) => {
         await page.goto(homePage);
         const pagePromise = context.waitForEvent('page');
-        await page.getByText('Made By: Pho86').click();
+        await page.getByText('Made By: Pho').click();
         const newPage = await pagePromise;
         await newPage.waitForLoadState();
         await expect(newPage).toHaveTitle('Pho86 (Philip Ho) · GitHub')

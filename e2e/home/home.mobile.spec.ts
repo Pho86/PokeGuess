@@ -8,12 +8,12 @@ test.use({
     ...devices['iPhone XR']
 })
 
-test.describe('check the pokecard mobile', () => {
+test.describe('check the homepage pokecard on mobile', () => {
     test('check amount of images before and after starting the game', async ({ page }) => {
         await page.goto(homePage);
-        await expect(page.locator('img')).toHaveCount(0);
-        await page.click('text=Start!')
         await expect(page.locator('img')).toHaveCount(1);
+        await page.click('text=Start!')
+        await expect(page.locator('img')).toHaveCount(2);
     })
     
     test('check the top tabs text and start', async ({ page }) => {

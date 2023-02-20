@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import PokeDex from "@/data/pokedex.json";
 import { useState, useEffect, useRef } from 'react';
-import styles from "@/styles/home.module.scss";
+import styles from "@/styles/Home.module.scss";
 import { selectRandomFromArray, generateRandomNumber } from "@/util";
 import PokeCard from '@/components/PokeCard';
 import Button from '@/components/Button';

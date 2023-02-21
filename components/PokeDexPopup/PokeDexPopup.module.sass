@@ -27,35 +27,44 @@
         pointer-events: auto
         justify-self: flex-start
         display: flex
-        gap:2em
-        @media screen and (max-width:768px) 
+        gap: 2em
+        .col:nth-child(1)
+            background-color: rgba(#f0c0c0, .3)
+            border-radius: 2em
+        img
+            transition: all .1s ease-in-out
+            padding: 1em
+            &:hover
+                transform: scale(1.1) 
+                filter: drop-shadow(6px 6px 0px v.$black)
+        @media screen and (max-width:768px)
             flex-direction: column
             padding: 2.5em
         .number
             color: #616161
-        .tag 
+        .tag
             border-radius: .8em
-            padding:.5em
+            padding: .5em
             border: none
             font-weight: 800
-            width:100%
+            width: 100%
             text-align: center
-        .tags 
+        .tags
             display: flex
             justify-content: space-between
-            gap:1em
+            gap: 1em
         .col
             display: flex
             flex-direction: column
-            gap:.8em
+            gap: .8em
             justify-content: space-between
-        .abilities 
+        .abilities
             font-weight: 600
-        .bar 
+        .bar
             width: 100%
             border: 3px solid black
             border-radius: 1em
-            display: flex 
+            display: flex
         .female
             color: #FF6060
             font-weight: 600
@@ -68,15 +77,22 @@
         .malebar
             height: 10px
             background-color: #3355FF
-        .borderleft 
+        .borderleft
             border-radius: 0em 1em 1em 0em
         .borderright
             border-radius: 1em 0em 0em 1em
-        .borderall 
+        .borderall
             border-radius: 1em 1em 1em 1em
         .gender
             display: flex
-            gap:2em
+            gap: 2em
             justify-content: space-between
 
-
+@media (max-width:414px)
+    .area
+        .popup
+            padding: 2em
+            gap: 1em
+            img
+                width: 250px
+                height: 250px

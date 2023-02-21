@@ -54,7 +54,7 @@
     padding: 4em;
     border-radius: 1.5em;
     gap: 2em;
-    z-index: 10;    
+    z-index: 10;
     filter: drop-shadow(0px 8px 0px #fd8383);
 }
 
@@ -73,15 +73,16 @@
     div {
         .PokeCard {
             padding: 3em 2.5em;
-            gap:1.5em;
+            gap: 1.5em;
         }
-    }   
+    }
 }
+
 @media screen and (max-width:414px) {
     div {
         .PokeCard {
-            padding: 3em 2em;
-            gap:3em;
+            padding: 3em 1.5em;
+            gap: 2em;
         }
-    }   
+    }
 }

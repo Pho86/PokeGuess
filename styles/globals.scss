@@ -13,13 +13,17 @@ body {
 }
 
 @media screen and (max-width:768px) {
-  html, body {
+
+  html,
+  body {
     font-size: 15px;
   }
 }
 
 @media screen and (max-width:414px) {
-  html, body {
+
+  html,
+  body {
     font-size: 14px;
   }
 }
@@ -29,7 +33,8 @@ a {
   text-decoration: none;
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
 }
 
@@ -113,6 +118,7 @@ textarea:focus, input:focus{
   background: #705746;
   color: darken(#705746, 70%);
 }
+
 .Steel {
   background: #B7B7CE;
   color: lighten(#B7B7CE, 30%);
@@ -122,4 +128,3 @@ textarea:focus, input:focus{
   background: #D685AD;
   color: lighten(#D685AD, 30%);
 }
-

@@ -264,7 +264,7 @@ export default function Home() {
 
               <div className={styles.PokeCard}>
                 <PokeCard Pokemon={Pokemon} TLSquare={TLSquare} TRSquare={TRSquare} BLSquare={BLSquare} BRSquare={BRSquare} Blur={Blur} Darken={Darken} onChange={handleInput} onKeyDown={handleInput} value={inputValue} disabled={Disabled} />
-                {Disabled ? <Button onClick={() => { StartGame(true) }} type={"button"}>Start!</Button> : <div className={styles.buttons}><Button onClick={() => { GeneratePokemon(false) }} type={"button"}>I don&apos;t know</Button><Button onClick={() => { SubmitInput() }} type={"button"}>Submit</Button></div>}
+                {Disabled ? <Button onClick={() => { StartGame(true) }} type={"button"}>Start!</Button> : <div className={styles.buttons}><Button onClick={() => { GeneratePokemon(false); setInputValue(""); }} type={"button"}>I don&apos;t know</Button><Button onClick={() => { SubmitInput() }} type={"button"}>Submit</Button></div>}
               </div>
               <div className={styles.CardCol}>
                 <SelectTab name="Gen 1" checked={Gen1} side={true} onClick={() => { setGen1(!Gen1); EndGame(true); FilterPokeDex() }} />
@@ -283,8 +283,8 @@ export default function Home() {
           <Popup onExit={() => { togglePopUp(false) }} show={PopUp}>
             <h3>You Lost.</h3>
             <p>You guessed <b>{PreviousGuess}</b> and it was <b>{PreviousPokemon.pokemon_name}</b>.</p>
-            <p>Your score was {Score}.</p>
-            <p>Your time was {Time} seconds.</p>
+            <p>Your score was <b>{Score}.</b></p>
+            <p>Your time was <b>{Time} seconds</b>.</p>
             <input type="text" className={styles.popup_input} value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
             <Button onClick={async () => { if (User) { await postData(); togglePopUp(false) } else alert('put a name please') }}>Submit Score</Button>
           </Popup>
@@ -292,12 +292,12 @@ export default function Home() {
           <Popup onExit={() => { toggleWin(false) }} show={Win}>
             <h3>Congratulations!</h3>
             <p>You completed the PokeDex.</p>
-            <p>Your score was {Score}.</p>
-            <p>Your time was {Time} seconds.</p>
+            <p>Your score was <b>{Score}</b>.</p>
+            <p>Your time was <b>{Time} seconds.</b></p>
             <input type="text" className={styles.popup_input} value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
             <Button onClick={async () => { if (User) { await postData(); toggleWin(false) } else alert('put a name please') }}>Submit Score</Button>
           </Popup>
-          
+
         </>
       </main>
     </>

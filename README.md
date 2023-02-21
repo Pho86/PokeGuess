@@ -3,7 +3,8 @@
 </div>
 
 # PokéGuess
-PokéGuess is a project involving a dataset from [Kaggle based from the game Pokémon](https://www.kaggle.com/datasets/joshuabetetta/complete-pokedex-v100). Guess pokemon from your favourite generations, and get the highest score on the leaderboard. Furthermore, in the application, it also contains a PokéDex to learn more about each pokémon. Hosted on [Vercel](https://pokemonguesser.vercel.app/). *Note: This application only goes up to Generation 8, Pokemon Sword And Shield.* 
+PokéGuess is a web application involving a dataset from [Kaggle based from the game Pokémon](https://www.kaggle.com/datasets/joshuabetetta/complete-pokedex-v100). Guess pokemon from your favourite generation(s), and achieve the highest score on the leaderboard. Furthermore, in the web application, it contains a PokéDex to learn more about each pokémon. Hosted on [Vercel](https://pokemonguesser.vercel.app/). 
+> *Note: This web application only contains data up to Generation 8, Pokémon Sword And Shield.* 
 
 ## Technology used
 * Next JS 13, React
@@ -15,5 +16,5 @@ PokéGuess is a project involving a dataset from [Kaggle based from the game Pok
 * Prisma (PlanetScale)
 * Axios
 
-## Data used in the application
+## Data used
 * https://www.kaggle.com/datasets/joshuabetetta/complete-pokedex-v100

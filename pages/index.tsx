@@ -53,6 +53,7 @@ export default function Home() {
   const [PopUp, togglePopUp] = useState(false);
   const [Win, toggleWin] = useState(false)
   const Timer = useRef(0 as any);
+  const [buttonDisable, setButtonDisable] = useState(false)
 
   // sound states
   const [Volume, setVolume] = useState(1);
@@ -217,6 +218,7 @@ export default function Home() {
     setBLSquare(false)
     setTLSquare(false)
     setTRSquare(false)
+    setButtonDisable(false)
     TimerStart()
   }
 
@@ -286,7 +288,7 @@ export default function Home() {
             <p>Your score was <b>{Score}.</b></p>
             <p>Your time was <b>{Time} seconds</b>.</p>
             <input type="text" className={styles.popup_input} value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
-            <Button onClick={async () => { if (User) { await postData(); togglePopUp(false) } else alert('put a name please') }}>Submit Score</Button>
+            <Button disabled={buttonDisable} onClick={async () => { if (User) { await postData(); togglePopUp(false); setButtonDisable(true) } else alert('put a name please') }}>Submit Score</Button>
           </Popup>
 
           <Popup onExit={() => { toggleWin(false) }} show={Win}>
@@ -295,7 +297,7 @@ export default function Home() {
             <p>Your score was <b>{Score}</b>.</p>
             <p>Your time was <b>{Time} seconds.</b></p>
             <input type="text" className={styles.popup_input} value={User} placeholder={"Enter your name"} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setUser(event.target.value) }} />
-            <Button onClick={async () => { if (User) { await postData(); toggleWin(false) } else alert('put a name please') }}>Submit Score</Button>
+            <Button disabled={buttonDisable} onClick={async () => { if (User) { await postData(); toggleWin(false); setButtonDisable(true) } else alert('put a name please') }}>Submit Score</Button>
           </Popup>
 
         </>

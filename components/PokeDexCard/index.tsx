@@ -24,7 +24,7 @@ export default function PokeDexCard({
             }}
             id={pokemon.pokemon_name + "-card"}
         >
-            <Image src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${pokemon.primary_color} pokemon its shape is a ${pokemon.shape}.`} width={150} height={150} />
+            <Image unoptimized src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${pokemon.primary_color} pokemon its shape is a ${pokemon.shape}.`} width={150} height={150} />
             <div className={styles.info}>
                 <h6>#{pokemon.pokedex_number}</h6>
                 <h3>{pokemon.pokemon_name}</h3>

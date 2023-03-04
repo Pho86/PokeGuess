@@ -38,7 +38,7 @@ export default function PokeCard({
                     {TRSquare && <div className={`${styles.square} ${styles.topright}`}> </div>}
                     {BLSquare && <div className={`${styles.square} ${styles.bottomleft}`}> </div>}
                     {BRSquare && <div className={`${styles.square} ${styles.bottomright}`}> </div>}
-                    <Image className={`${Darken && styles.darken} ${Blur && styles.blur25}`} src={`/pokemon/${Pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={275} height={275} />
+                    <Image unoptimized className={`${Darken && styles.darken} ${Blur && styles.blur25}`} src={`/pokemon/${Pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${Pokemon.primary_color} pokemon its shape is a ${Pokemon.shape}.`} width={275} height={275} />
                 </div> :
                 <div className={styles.pokecard}>
                     <Lottie animationData={Pokeball} loop={true} className={styles.lottie} />

@@ -10,7 +10,7 @@ export default function NavBar({
         <nav className={styles.navBar}>
             <div className={styles.topNav}>
                 <Link href={"/"} className={`${active === 1 && styles.active}`}>
-                    <Image src="/logo.svg" alt="logo" width={50} height={50} />
+                    <Image unoptimized src="/logo.svg" alt="logo" width={50} height={50} />
                     <h1>
                         PokéGuess
                     </h1>

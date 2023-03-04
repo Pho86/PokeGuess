@@ -26,7 +26,7 @@ export default function PokeDexPopup({
                                 id={pokemon.pokemon_name + "-popup"}
                             >
                                 <div className={styles.col}>
-                                    <Image src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${pokemon.primary_color} pokemon its shape is a ${pokemon.shape}.`} width={275} height={275} />
+                                    <Image unoptimized src={`/pokemon/${pokemon.pokemon_name.toLowerCase().replace(/ /g, "_")}.png`} alt={`${pokemon.primary_color} pokemon its shape is a ${pokemon.shape}.`} width={275} height={275} />
                                 </div>
                                 <div className={styles.col}>
                                     <h2><span className={styles.number}>#{pokemon.pokedex_number}</span> {pokemon.pokemon_name}</h2>
